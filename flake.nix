@@ -1,20 +1,15 @@
 {
-  description = "NixOS Konfiguration mit 6.12 LTS-Kernel";
-
+  description = "NixOS Flake Config";
+  
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-25.05";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
   };
 
   outputs = { self, nixpkgs, ... }@inputs: {
     nixosConfigurations = {
       nixos = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
-
-        modules = [
-          ./configuration.nix
-          ./boot.nix
-          ./hardware-configuration.nix
-        ];
+        modules = [ ./configuration.nix ];
       };
     };
   };
