@@ -66,31 +66,6 @@
     "broadcom-sta"
   ];  
 
-  # List packages installed in system profile. To search, run:
-  # $ nix search wget
-  environment.systemPackages = with pkgs; [
-    vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
-    fuzzel
-    vscodium
-    kitty
-    quickshell
-  ];
-
-  programs = {
-    zsh.enable = true;
-    firefox.enable = true;
-    niri.enable = true;
-    git = {
-      enable = true;
-      config = {
-        user = {
-          name = "Max Goedecke";
-          email = "max_goedecke@gmx.de";
-        };
-      };
-    };
-  };
-
   security = {
     doas = {
       enable = true;
