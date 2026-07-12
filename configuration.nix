@@ -73,7 +73,7 @@
     fuzzel
     vscodium
     kitty
-    #quickshell
+    quickshell
   ];
 
   programs = {
