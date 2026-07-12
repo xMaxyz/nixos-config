@@ -65,7 +65,11 @@
   nixpkgs.config.allowInsecurePredicate = pkg: builtins.elem (lib.getName pkg) [
     "broadcom-sta"
   ];  
-
+  
+  programs.zsh.enable = true;
+  programs.git.enable = true;
+  programs.niri.enable = true;
+  
   security = {
     doas = {
       enable = true;
@@ -93,6 +97,7 @@
 
   # Enable the OpenSSH daemon.
   services.openssh.enable = true;
+  services.upower.enable = true;
 
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];
