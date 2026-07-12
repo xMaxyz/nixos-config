@@ -22,8 +22,8 @@
     };
 
     initContent = ''
-      PROMPT="%F{#ff803b}%#%f %F{#faa768}%2~%f %F{#cdd6f4}>%f "
-      RPROMPT=""
+      PROMPT="${config.my.theme.custom.zsh.prompt}";
+      RPROMPT="${config.my.theme.custom.zsh.rprompt}";
     '';
 
     autosuggestion.enable = true;

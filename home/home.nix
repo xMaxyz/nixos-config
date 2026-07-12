@@ -3,8 +3,12 @@
 {
   imports = 
   [
+    ../modules/theme-options.nix
+    ../themes/current.nix
     ./zsh.nix
     ./git.nix
+    ./fuzzel.nix
+    ./dunst.nix
   ];
   
   home.username = "max";
@@ -23,7 +27,6 @@
 
   home.packages = with pkgs; [
     vim
-    fuzzel
     vscodium
     kitty
     quickshell
@@ -35,6 +38,7 @@
     mpv
     playerctl
     wirelesstools
+    nerd-fonts.jetbrains-mono
   ];
 
 
