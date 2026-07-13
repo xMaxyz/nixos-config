@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs, inputs, ... }:
 
 {
   imports = 
@@ -9,6 +9,7 @@
     ./git.nix
     ./fuzzel.nix
     ./dunst.nix
+    ./niri.nix
   ];
   
   home.username = "max";
@@ -26,19 +27,21 @@
   };
 
   home.packages = with pkgs; [
-    vim
-    vscodium
-    kitty
-    quickshell
-    btop
-    fastfetch
-    tree
-    curl
-    vlc
-    mpv
-    playerctl
-    wirelesstools
-    nerd-fonts.jetbrains-mono
+    vim #editor
+    vscodium #editor
+    kitty #terminal
+    quickshell #graphical shell
+    btop #task manager
+    fastfetch #cli info
+    tree #cli info
+    curl #download
+    vlc #media player
+    mpv #mediaplayer
+    playerctl #cli media control
+    wirelesstools #for quickshell to get name of wifi
+    nerd-fonts.jetbrains-mono #font
+    dunst #notify daemon
+    libnotify #send notifies
   ];
 
 

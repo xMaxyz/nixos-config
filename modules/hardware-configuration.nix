@@ -5,7 +5,8 @@
 
 {
   imports =
-    [ (modulesPath + "/installer/scan/not-detected.nix")
+    [ 
+      (modulesPath + "/installer/scan/not-detected.nix")
     ];
 
   fileSystems."/" =
@@ -19,7 +20,24 @@
       options = [ "fmask=0077" "dmask=0077" ];
     };
 
-  swapDevices = [ ];
+  zramSwap = {
+    enable = true;
+    algorithm = "lz4";
+    memoryPercent = 50;
+    priority = 100;
+  };
+  
+  swapDevices = [ 
+    {
+      device = "/swapfile";
+      size = 12 * 1024;
+      priority = 1;
+    }
+  ];
+
+  boot.kernel.sysctl = {
+    "vm.swappiness" = 180;
+  };
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
   hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;

@@ -52,6 +52,17 @@
           frame_color = "cc6666";
         };
       };
+
+      niri = {
+        border = {
+          inactive-color = "595959aa";
+          urgent-color = "9b0000";
+          active-gradient = {
+            from = "${config.my.theme.global.colors.accent}ee";
+            to = "fdaa6bee";
+          };
+        };
+      };
     };
   };
 }
