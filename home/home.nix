@@ -55,12 +55,13 @@
     #depends
     wirelesstools #quickshell
     libnotify
+    xwayland-satellite
 
   ]) ++ (with pkgs.unstable; [  
     #editors
     vscodium
-    steam
     discord
+    steam
   ]);
 
 
