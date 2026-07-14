@@ -1,4 +1,4 @@
-{ config, pkgs, inputs, ... }:
+{ config, pkgs, inputs, options, ... }:
 
 {
   imports = [ 
@@ -7,7 +7,7 @@
     ./niri/layout.nix
     ./niri/misc.nix
     ./niri/window-rules.nix 
-    ];
+  ];
 
   programs.niri = {
     enable = true;
@@ -29,7 +29,6 @@
         { command = [ "${pkgs.xwayland-satellite}/bin/xwayland-satellite" ]; }
         { command = [ "${pkgs.dbus}/bin/dbus-update-activation-environment" "--systemd" "WAYLAND_DISPLAY" "XDG_CURRENT_DESKTOP=niri" ]; }
       ];
-
     };
   };
 }

@@ -42,6 +42,13 @@
       };
     };
 
+    blur = {
+      passes = 1;
+      offset = 2;
+      noise = 0.02;
+      saturation = 1;
+    };
+
     window-rules = [
       {
         geometry-corner-radius = {
@@ -53,12 +60,12 @@
         clip-to-geometry = true;
       }
       
-      #{
-      #  background-effects = {
-      #    blur = true;
-      #    xray = false;
-      #  };
-      #}
+      {
+        background-effect = {
+          blur = true;
+          xray = false;
+        };
+      }
     ];
 
     layer-rules = [
@@ -70,13 +77,6 @@
       }
     ];
 
-    animations.enable = true;
-    
-    #blur = {
-    #  passes = 1;
-    #  offset = 2;
-    #  noise = 0.02;
-    #  saturation = 1;
-    #};
+    animations.enable = true;   
   };
 }
