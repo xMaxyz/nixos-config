@@ -26,27 +26,45 @@
     QML_IMPORT_PATH="/home/max/.dotfiles/working/quickshell/common:";
   };
 
-  home.packages = with pkgs; [
-    vim #editor
-    vscodium #editor
-    kitty #terminal
-    quickshell #graphical shell
-    btop #task manager
-    fastfetch #cli info
-    tree #cli info
-    curl #download
-    vlc #media player
-    mpv #mediaplayer
-    playerctl #cli media control
-    wirelesstools #for quickshell to get name of wifi
-    nerd-fonts.jetbrains-mono #font
-    dunst #notify daemon
-    libnotify #send notifies
-  ];
+  home.packages = (with pkgs; [
+    #editors
+    vim
+
+    #desktop
+    kitty
+    quickshell
+    dunst
+    firefox
+    
+    #info
+    btop
+    fastfetch
+    tree
+    
+    #media
+    vlc
+    mpv
+    playerctl
+
+    #cli
+    curl
+    
+    #fonts
+    nerd-fonts.jetbrains-mono
+
+    #depends
+    wirelesstools #quickshell
+    libnotify
+
+  ]) ++ (with pkgs.unstable; [  
+    #editors
+    vscodium
+    steam
+    discord
+  ]);
 
 
   programs = {
     home-manager.enable = true;
-    firefox.enable = true;
   };
 }
