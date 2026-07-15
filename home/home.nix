@@ -5,11 +5,11 @@
   [
     ../modules/theme-options.nix
     ../themes/current.nix
-    ./zsh.nix
-    ./git.nix
-    ./fuzzel.nix
-    ./dunst.nix
-    ./niri.nix
+    ./zsh/zsh.nix
+    ./git/git.nix
+    ./fuzzel/fuzzel.nix
+    ./dunst/dunst.nix
+    ./niri/niri.nix
   ];
   
   home.username = "max";
