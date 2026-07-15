@@ -54,7 +54,7 @@
   users.users."max" = {
     isNormalUser = true;
     description = "max";
-    extraGroups = [ "networkmanager" "wheel" "max" ];
+    extraGroups = [ "networkmanager" "wheel" "max" "audio" "video" ];
     shell = pkgs.zsh;
     packages = with pkgs; [];
   };
@@ -85,6 +85,10 @@
       enable = true;
     };
   };
+
+  environment.systemPackages = with pkgs; [
+    brightnessctl
+  ];
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
   # programs.mtr.enable = true;
