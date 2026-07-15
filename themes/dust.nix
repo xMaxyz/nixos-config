@@ -5,8 +5,10 @@
     global = {
       colors = {
         accent = "faa768";
+        foreground = "ffffff";
       };
       font = "JetBrainsMono Nerd Font";
+      wallpaper = "file:///home/max/Bilder/.wallpaper/dust";
     };
 
     custom = {
@@ -62,6 +64,33 @@
             to = "fdaa6bee";
           };
         };
+      };
+
+      quickshell = {
+        menubar = {
+          background = "b3141414";
+          boxwidth = "70";
+          boxheight = "40";
+          border.radius = "10";
+        };
+
+        widget = {
+          background = "25000000";
+          border.color = "15ffffff";
+          subtext = "${config.my.theme.custom.quickshell.text.sub.color}";
+          zonewidth = "0.3";
+        };
+
+        accent = "${config.my.theme.global.colors.accent}";
+        text.foreground = "${config.my.theme.global.colors.foreground}";
+        
+        text = {
+          family = "${config.my.theme.global.font}";
+          size = "10";
+          color = "${config.my.theme.global.colors.foreground}";
+          sub.color = "d0ffffff";
+        };
+
       };
     };
   };

@@ -10,6 +10,7 @@
     ./fuzzel/fuzzel.nix
     ./dunst/dunst.nix
     ./niri/niri.nix
+    ./quickshell/quickshell.nix
   ];
   
   home.username = "max";
