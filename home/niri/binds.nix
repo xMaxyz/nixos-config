@@ -80,12 +80,22 @@
     "Mod+Right".action.focus-column-right = {};
     "Mod+Adiaeresis".action.focus-column-right = {};
 
+    "Mod+H".action.focus-column-left = {};
+    "Mod+J".action.focus-window-or-workspace-down = {};
+    "Mod+K".action.focus-window-or-workspace-up = {};
+    "Mod+L".action.focus-column-right = {};
+
     "Mod+Shift+Left".action.move-column-left = {};
     "Mod+Shift+Odiaeresis".action.move-column-left = {};
     "Mod+Shift+Down".action.move-column-to-workspace-down = {};
     "Mod+Shift+Up".action.move-column-to-workspace-up = {};
     "Mod+Shift+Right".action.move-column-right = {};
     "Mod+Shift+Adiaeresis".action.move-column-right = {};
+
+    "Mod+Shift+H".action.move-column-left = {};
+    "Mod+Shift+J".action.move-column-to-workspace-down = {};
+    "Mod+Shift+K".action.move-column-to-workspace-up = {};
+    "Mod+Shift+L".action.move-column-right = {};
 
     "Mod+SSharp".action.focus-column-first = {};
     "Mod+Dead_Acute".action.focus-column-last = {};
