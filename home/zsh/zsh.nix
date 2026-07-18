@@ -22,8 +22,8 @@
     };
 
     initContent = ''
-      PROMPT="${config.my.theme.custom.zsh.prompt}";
-      RPROMPT="${config.my.theme.custom.zsh.rprompt}";
+      PROMPT="${config.my.theme.zsh.prompt}";
+      RPROMPT="${config.my.theme.zsh.rprompt}";
     '';
 
     autosuggestion.enable = true;

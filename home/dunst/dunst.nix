@@ -16,9 +16,9 @@
         gap_size = "8";
         transparency = "10";
         font = "${config.my.theme.global.font} 11";
-        background = "#${config.my.theme.custom.dunst.colors.background}";
-        foreground = "#${config.my.theme.custom.dunst.colors.foreground}";
-        frame_color = "#${config.my.theme.custom.dunst.colors.frame_color}";
+        background = "#${config.my.theme.dunst.colors.background}";
+        foreground = "#${config.my.theme.dunst.colors.foreground}";
+        frame_color = "#${config.my.theme.dunst.colors.frame_color}";
         separator_color = "frame";
         padding = "14";
         horizontal_padding = "14";
@@ -38,21 +38,21 @@
 
       urgency_low = {
         timeout = "5";
-        background = "#${config.my.theme.custom.dunst.urgency_low.background}";
-        foreground = "#${config.my.theme.custom.dunst.urgency_low.foreground}";
-        frame_color = "#${config.my.theme.custom.dunst.urgency_low.frame_color}";
+        background = "#${config.my.theme.dunst.urgency_low.background}";
+        foreground = "#${config.my.theme.dunst.urgency_low.foreground}";
+        frame_color = "#${config.my.theme.dunst.urgency_low.frame_color}";
       };
 
       urgency_normal = {
-        background = "#${config.my.theme.custom.dunst.urgency_normal.background}";
-        foreground = "#${config.my.theme.custom.dunst.urgency_normal.foreground}";
-        frame_color = "#${config.my.theme.custom.dunst.urgency_normal.frame_color}";
+        background = "#${config.my.theme.dunst.urgency_normal.background}";
+        foreground = "#${config.my.theme.dunst.urgency_normal.foreground}";
+        frame_color = "#${config.my.theme.dunst.urgency_normal.frame_color}";
       };
 
       urgency_critical = {
-        background = "#${config.my.theme.custom.dunst.urgency_critical.background}";
-        foreground = "#${config.my.theme.custom.dunst.urgency_critical.foreground}";
-        frame_color = "#${config.my.theme.custom.dunst.urgency_critical.frame_color}";
+        background = "#${config.my.theme.dunst.urgency_critical.background}";
+        foreground = "#${config.my.theme.dunst.urgency_critical.foreground}";
+        frame_color = "#${config.my.theme.dunst.urgency_critical.frame_color}";
       };
     };
   };

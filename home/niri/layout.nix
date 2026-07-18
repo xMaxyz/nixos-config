@@ -16,11 +16,11 @@
       border = {
         enable = true;
         width = 2;
-        inactive.color = "#${config.my.theme.custom.niri.border.inactive-color}";
-        urgent.color = "#${config.my.theme.custom.niri.border.urgent-color}";
+        inactive.color = "#${config.my.theme.niri.border.inactive-color}";
+        urgent.color = "#${config.my.theme.niri.border.urgent-color}";
         active.gradient = {
-          from = "#${config.my.theme.custom.niri.border.active-gradient.from}";
-          to = "#${config.my.theme.custom.niri.border.active-gradient.to}";
+          from = "#${config.my.theme.niri.border.active-gradient.from}";
+          to = "#${config.my.theme.niri.border.active-gradient.to}";
           angle = 45;
           relative-to = "workspace-view";
         };

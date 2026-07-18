@@ -28,38 +28,32 @@
 
     QtObject {
       //colors
-      property color menubarBackground: "#${config.my.theme.custom.quickshell.menubar.background}" //background for components of menubar
-      property color widgetBackground: "#${config.my.theme.custom.quickshell.widget.background}"
-      property color widgetBorderColor: "#${config.my.theme.custom.quickshell.widget.border.color}"
-      property color accent: "#${config.my.theme.custom.quickshell.accent}"
-      property color foreground: "#${config.my.theme.custom.quickshell.text.color}" //text color
-      property color widgetSubtext: "#${config.my.theme.custom.quickshell.widget.subtext}"
+      property color menubarBackground: "#${config.my.theme.quickshell.menubar.background}" //background for components of menubar
+      property color widgetBackground: "#${config.my.theme.quickshell.widget.background}"
+      property color widgetBorderColor: "#${config.my.theme.quickshell.widget.border.color}"
+      property color accent: "#${config.my.theme.quickshell.accent}"
+      property color foreground: "#${config.my.theme.quickshell.text.color}" //text color
+      property color widgetSubtext: "#${config.my.theme.quickshell.widget.subtext}"
 
       //fonts
-      readonly property string fontFamily: "${config.my.theme.custom.quickshell.text.family}"
-      readonly property int normalFontSize: ${config.my.theme.custom.quickshell.text.size}
+      readonly property string fontFamily: "${config.my.theme.quickshell.text.family}"
+      readonly property int normalFontSize: ${config.my.theme.quickshell.text.size}
 
       //box style
-      readonly property int borderRadius: ${config.my.theme.custom.quickshell.menubar.border.radius} //for all components of menubar but MusicPopup
-      readonly property int menubarBoxWidth: ${config.my.theme.custom.quickshell.menubar.boxwidth} //Base value for all components of menubar
-      readonly property int menubarBoxHeight: ${config.my.theme.custom.quickshell.menubar.boxheight} //Height for all menubar
+      readonly property int borderRadius: ${config.my.theme.quickshell.menubar.border.radius} //for all components of menubar but MusicPopup
+      readonly property int menubarBoxWidth: ${config.my.theme.quickshell.menubar.boxwidth} //Base value for all components of menubar
+      readonly property int menubarBoxHeight: ${config.my.theme.quickshell.menubar.boxheight} //Height for all menubar
 
 
       //Widget
-      readonly property real widgetzoneWidth: ${config.my.theme.custom.quickshell.widget.zonewidth}
+      readonly property real widgetzoneWidth: ${config.my.theme.quickshell.widget.zonewidth}
     }
   '';
 
   xdg.configFile = {
-    "quickshell/modules/Wallpaper.qml".source = ../../assets/quickshell/modules/Wallpaper.qml;
-    "quickshell/modules/MenuBar.qml".source = ../../assets/quickshell/modules/MenuBar.qml;
-    "quickshell/modules/Desktop.qml".source = ../../assets/quickshell/modules/Desktop.qml;
-
-    "quickshell/menubar/ClockBox.qml".source = ../../assets/quickshell/menubar/ClockBox.qml;
-    "quickshell/menubar/MusicBox.qml".source = ../../assets/quickshell/menubar/MusicBox.qml;
-    "quickshell/menubar/MusicPopup.qml".source = ../../assets/quickshell/menubar/MusicPopup.qml;
-    "quickshell/menubar/StatusBar.qml".source = ../../assets/quickshell/menubar/StatusBar.qml;
-    
-    "quickshell/desktop/widgets/ClockWidget.qml".source = ../../assets/quickshell/desktop/widgets/ClockWidget.qml;
+    "quickshell/modules".source = ../../assets/quickshell/modules;
+    "quickshell/menubar".source = ../../assets/quickshell/menubar;
+    "quickshell/desktop".source = ../../assets/quickshell/desktop;
   };
+  
 }

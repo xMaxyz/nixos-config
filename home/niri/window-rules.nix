@@ -11,13 +11,13 @@
         default-column-width = {};
       }
 
-      {
-        matches = [
-          { app-id = "firefox$"; }
-          { title = "^Picture-in-Picture$"; }
-        ];
-        open-floating = true;
-      }
+#      {
+#        matches = [
+#          { app-id = "firefox$"; }
+#          { title = "^Picture-in-Picture$"; }
+#        ];
+#        open-floating = true;
+#      }
     ];
   };
 }

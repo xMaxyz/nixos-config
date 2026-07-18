@@ -29,15 +29,15 @@
       };
 
       colors = {
-        background = "${config.my.theme.custom.fuzzel.background}";
-        text = "${config.my.theme.custom.fuzzel.text}";
-        prompt = "${config.my.theme.custom.fuzzel.prompt}";
-        input = "${config.my.theme.custom.fuzzel.input}";
-        match = "${config.my.theme.custom.fuzzel.match}";
-        selection = "${config.my.theme.custom.fuzzel.selection}";
-        selection-text = "${config.my.theme.custom.fuzzel.selection-text}";
-        selection-match = "${config.my.theme.custom.fuzzel.selection-match}";
-        border = "${config.my.theme.custom.fuzzel.border}";
+        background = "${config.my.theme.fuzzel.background}";
+        text = "${config.my.theme.fuzzel.text}";
+        prompt = "${config.my.theme.fuzzel.prompt}";
+        input = "${config.my.theme.fuzzel.input}";
+        match = "${config.my.theme.fuzzel.match}";
+        selection = "${config.my.theme.fuzzel.selection}";
+        selection-text = "${config.my.theme.fuzzel.selection-text}";
+        selection-match = "${config.my.theme.fuzzel.selection-match}";
+        border = "${config.my.theme.fuzzel.border}";
       };
     };
   };

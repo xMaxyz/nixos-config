@@ -11,6 +11,8 @@
     ./dunst/dunst.nix
     ./niri/niri.nix
     ./quickshell/quickshell.nix
+    ./yazi/yazi.nix
+    ./vim/vim.nix
   ];
   
   home.username = "max";
@@ -24,13 +26,9 @@
   home.sessionVariables = {
     XDG_CONFIG_HOME = "$HOME/.config";
     XDG_CACHE_HOME = "$HOME/.cache";
-    QML_IMPORT_PATH="/home/max/.dotfiles/working/quickshell/common:";
   };
 
   home.packages = (with pkgs; [
-    #editors
-    vim
-
     #desktop
     kitty
     quickshell
