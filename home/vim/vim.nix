@@ -43,5 +43,12 @@
       inoremap {<CR> {<CR>}<Esc>O
       inoremap \'''\'<CR> \'''\'<CR>\'''\'<Esc>O
     '';
+
+    plugins = with pkgs.vimPlugins; [
+      vim-wordmotion
+      vim-surround
+      targets-vim
+      vim-gitgutter
+    ];
   };
 }
