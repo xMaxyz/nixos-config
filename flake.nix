@@ -34,7 +34,6 @@
       ];
     };
 
-    # Deine gewünschte Hilfsfunktion
     mkHost = host: nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       modules = [
@@ -46,7 +45,6 @@
     };
   
   in {
-    # Generierung der Systemkonfigurationen per Funktionsaufruf
     nixosConfigurations = {
       nixie = mkHost "nixie";
       maggie = mkHost "maggie";
