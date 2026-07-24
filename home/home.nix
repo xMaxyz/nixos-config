@@ -35,7 +35,8 @@
     firefox
     dolphin-emu
     kid3
-    
+    tipp10
+
     #info
     btop
     fastfetch
@@ -54,11 +55,12 @@
 
     #depends
     wirelesstools #quickshell
-    libnotify
-    xwayland-satellite
+    libnotify #send notifies
+    xwayland-satellite #
+    playerctl #music control
+
 
   ]) ++ (with pkgs.unstable; [  
-    #editors
     vscodium
     discord
     steam
