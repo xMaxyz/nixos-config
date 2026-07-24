@@ -8,19 +8,23 @@
   imports =
     [
       (modulesPath + "/installer/scan/not-detected.nix")
-      ../modules/boot.nix
-      ../modules/swap.nix
-      ../modules/theme-options.nix
-      ../modules/users.nix
-      ../modules/services.nix
-      ../modules/packages.nix
-      ../modules/misc.nix
-      ../modules/uncommon/broadcom.nix
-    ];
+      #back-end
+      ./hardware.nix
+      ../../modules/boot.nix
+      ../../modules/swap.nix
 
-  
+      #user-space
+      ../../modules/theme-options.nix
+      ../../modules/users.nix
+      ../../modules/services.nix
+      ../../modules/packages.nix
+      ../../modules/misc.nix
+
+    ];
   
   networking.hostName = "maggie"; # Define your hostname.
+  boot.kernelPackages = pkgs.linuxPackages_6_12;
+  nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
   
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
@@ -44,23 +48,6 @@
   # Or disable the firewall altogether.
   # networking.firewall.enable = false;
 
-  fileSystems."/" =
-    { device = "/dev/disk/by-uuid/8232ee9b-6e57-421f-83a5-1d465a14eb79";
-      fsType = "ext4";
-      options = [ "defaults" "noatime" ];
-    };
-
-  fileSystems."/boot" =
-    { device = "/dev/disk/by-uuid/64CA-6248";
-      fsType = "vfat";
-      options = [ "fmask=0077" "dmask=0077" ];
-    };
-
-  
-
-  nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
-  hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
-  hardware.graphics.enable32Bit = true;
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
@@ -69,5 +56,4 @@
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "26.05"; # Did you read the comment?
-
 }

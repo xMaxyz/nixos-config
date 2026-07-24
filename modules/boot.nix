@@ -2,8 +2,6 @@
 
 {
   boot = {
-    kernelPackages = pkgs.linuxPackages_6_12;
-    
     kernelModules = [ 
       "kvm-intel" 
       "wl" 

@@ -16,7 +16,7 @@
       nixie = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         modules = [
-          ./hosts/nixie.nix
+          ./hosts/nixie/configuration.nix
           {
             nixpkgs.overlays = [
               (final: prev: {
@@ -43,7 +43,7 @@
       maggie = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         modules = [ 
-          ./hosts/maggie.nix
+          ./hosts/maggie/configuration.nix
           {
             nixpkgs.overlays = [
               (final: prev: {
