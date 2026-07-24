@@ -9,18 +9,6 @@
       "wl" 
     ];
     
-    extraModulePackages = [ 
-      config.boot.kernelPackages.broadcom_sta 
-    ];
-    
-    blacklistedKernelModules = [ 
-      "b43" 
-      "bcma" 
-      "ssb" 
-      "brcmfmac" 
-      "brcmsmac" 
-    ];
-    
     loader = {
       systemd-boot.enable = true;
       efi.canTouchEfiVariables = true;

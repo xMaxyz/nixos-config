@@ -13,10 +13,37 @@
 
   outputs = { self, nixpkgs, nixpkgs-unstable, home-manager, ... }@inputs: {
     nixosConfigurations = {
-      nixos = nixpkgs.lib.nixosSystem {
+      nixie = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+        modules = [
+          ./hosts/nixie.nix
+          {
+            nixpkgs.overlays = [
+              (final: prev: {
+                unstable = import nixpkgs-unstable {
+                  system = prev.system;
+                  config.allowUnfree = true;
+                };
+              })
+            ];
+          }
+          home-manager.nixosModules.home-manager
+          {
+            home-manager.useGlobalPkgs = true;
+            home-manager.useUserPackages = true;
+            home-manager.extraSpecialArgs = { inherit inputs; };
+            home-manager.users.max = import ./home/home.nix;
+            home-manager.sharedModules = [
+              inputs.niri.homeModules.niri
+            ];
+          }
+        ];
+      };
+      
+      maggie = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         modules = [ 
-          ./modules/configuration.nix 
+          ./hosts/maggie.nix
           {
             nixpkgs.overlays = [
               (final: prev: {
