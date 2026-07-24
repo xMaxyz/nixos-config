@@ -11,61 +11,45 @@
     };
   };
 
-  outputs = { self, nixpkgs, nixpkgs-unstable, home-manager, ... }@inputs: {
+  outputs = { self, nixpkgs, nixpkgs-unstable, home-manager, ... }@inputs: 
+  let
+    overlayModule = {
+      nixpkgs.overlays = [
+        (final: prev: {
+          unstable = import nixpkgs-unstable {
+            system = prev.system;
+            config.allowUnfree = true;
+          };
+        })
+      ];
+    };
+
+    homeManagerConfigModule = {
+      home-manager.useGlobalPkgs = true;
+      home-manager.useUserPackages = true;
+      home-manager.extraSpecialArgs = { inherit inputs; };
+      home-manager.users.max = import ./home/home.nix;
+      home-manager.sharedModules = [
+        inputs.niri.homeModules.niri
+      ];
+    };
+
+    # Deine gewünschte Hilfsfunktion
+    mkHost = host: nixpkgs.lib.nixosSystem {
+      system = "x86_64-linux";
+      modules = [
+        ./hosts/${host}/configuration.nix
+        overlayModule
+        home-manager.nixosModules.home-manager
+        homeManagerConfigModule
+      ];
+    };
+  
+  in {
+    # Generierung der Systemkonfigurationen per Funktionsaufruf
     nixosConfigurations = {
-      nixie = nixpkgs.lib.nixosSystem {
-        system = "x86_64-linux";
-        modules = [
-          ./hosts/nixie/configuration.nix
-          {
-            nixpkgs.overlays = [
-              (final: prev: {
-                unstable = import nixpkgs-unstable {
-                  system = prev.system;
-                  config.allowUnfree = true;
-                };
-              })
-            ];
-          }
-          home-manager.nixosModules.home-manager
-          {
-            home-manager.useGlobalPkgs = true;
-            home-manager.useUserPackages = true;
-            home-manager.extraSpecialArgs = { inherit inputs; };
-            home-manager.users.max = import ./home/home.nix;
-            home-manager.sharedModules = [
-              inputs.niri.homeModules.niri
-            ];
-          }
-        ];
-      };
-      
-      maggie = nixpkgs.lib.nixosSystem {
-        system = "x86_64-linux";
-        modules = [ 
-          ./hosts/maggie/configuration.nix
-          {
-            nixpkgs.overlays = [
-              (final: prev: {
-                unstable = import nixpkgs-unstable {
-                  system = prev.system;
-                  config.allowUnfree = true;
-                };
-              })
-            ];
-          }
-          home-manager.nixosModules.home-manager
-          {
-            home-manager.useGlobalPkgs = true;
-            home-manager.useUserPackages = true;
-            home-manager.extraSpecialArgs = { inherit inputs; };
-            home-manager.users.max = import ./home/home.nix;
-            home-manager.sharedModules = [
-              inputs.niri.homeModules.niri
-            ];
-          }
-        ];
-      };
+      nixie = mkHost "nixie";
+      maggie = mkHost "maggie";
     };
   };
 }
