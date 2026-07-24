@@ -33,6 +33,8 @@
     quickshell
     dunst
     firefox
+    dolphin-emu
+    kid3
     
     #info
     btop
