@@ -1,6 +1,11 @@
-{ lib, ... }:
+{ lib, host, ... }:
 
 {
+  imports = [
+    ../themes/current.nix
+    ../hosts/${host}/ui.nix
+  ];
+
   options.my.theme = lib.mkOption {
     type = lib.types.attrs;
     default = {};

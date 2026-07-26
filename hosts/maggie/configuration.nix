@@ -14,7 +14,6 @@
       ../../modules/swap.nix
 
       #user-space
-      ../../modules/theme-options.nix
       ../../modules/users.nix
       ../../modules/services.nix
       ../../modules/packages.nix

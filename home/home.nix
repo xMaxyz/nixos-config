@@ -3,12 +3,6 @@
 {
   imports = 
   [
-    #functional
-    ../modules/custom-attrs.nix #makes my.theme an actual attribute set
-    ../themes/current.nix #import the actual theme
-    ../hosts/${host}/ui.nix #import different sizes for ui (host-specific)
-
-    #front-end
     ./zsh/zsh.nix
     ./git/git.nix
     ./fuzzel/fuzzel.nix
