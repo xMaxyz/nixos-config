@@ -3,6 +3,12 @@
 {
   environment.systemPackages = with pkgs; [
     brightnessctl
+    prismlauncher
+    
+
+    (prismlauncher.override {
+    jdks = [ graalvmPackages.graalvm-ce zulu8 zulu17 zulu ];
+    })
   ];
   
   programs = {
