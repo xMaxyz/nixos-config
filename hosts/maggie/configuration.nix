@@ -2,7 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, lib, inputs, modulesPath, ... }:
+{ config, pkgs, lib, inputs, modulesPath, host, ... }:
 
 {
   imports =
@@ -22,7 +22,7 @@
 
     ];
   
-  networking.hostName = "maggie"; # Define your hostname.
+  networking.hostName = "${host}"; # definded by name in flake.nix
   boot.kernelPackages = pkgs.linuxPackages_6_12;
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
   

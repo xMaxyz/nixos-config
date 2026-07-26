@@ -1,10 +1,14 @@
-{ config, pkgs, inputs, ... }:
+{ config, pkgs, inputs, host, ... }:
 
 {
   imports = 
   [
+    #functional
     ../modules/theme-options.nix
     ../themes/current.nix
+    ../hosts/${host}/ui.nix
+
+    #front-end
     ./zsh/zsh.nix
     ./git/git.nix
     ./fuzzel/fuzzel.nix

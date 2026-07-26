@@ -24,10 +24,12 @@
       ];
     };
 
-    homeManagerConfigModule = {
+    # Wir wandeln dieses Modul in eine Funktion um, die das Argument 'host' empfängt
+    homeManagerConfigModule = host: {
       home-manager.useGlobalPkgs = true;
       home-manager.useUserPackages = true;
-      home-manager.extraSpecialArgs = { inherit inputs; };
+      # Hier wird 'host' an alle Home-Manager-Dateien (z. B. home.nix) übergeben
+      home-manager.extraSpecialArgs = { inherit inputs host; };
       home-manager.users.max = import ./home/home.nix;
       home-manager.sharedModules = [
         inputs.niri.homeModules.niri
@@ -36,11 +38,13 @@
 
     mkHost = host: nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
+      # Hier wird 'host' an alle NixOS-Module (z. B. configuration.nix) übergeben
+      specialArgs = { inherit inputs host; };
       modules = [
         ./hosts/${host}/configuration.nix
         overlayModule
         home-manager.nixosModules.home-manager
-        homeManagerConfigModule
+        (homeManagerConfigModule host) # Funktion wird mit dem aktuellen Host aufgerufen
       ];
     };
   
