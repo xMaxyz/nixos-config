@@ -4,9 +4,9 @@
   imports = 
   [
     #functional
-    ../modules/theme-options.nix
-    ../themes/current.nix
-    ../hosts/${host}/ui.nix
+    ../modules/theme-options.nix #makes my.theme an actual attribute set
+    ../themes/current.nix #import the actual theme
+    ../hosts/${host}/ui.nix #import different sizes for ui (host-specific)
 
     #front-end
     ./zsh/zsh.nix

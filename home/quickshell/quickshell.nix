@@ -37,12 +37,12 @@
 
       //fonts
       readonly property string fontFamily: "${config.my.theme.quickshell.text.family}"
-      readonly property int normalFontSize: ${config.my.theme.quickshell.text.size}
+      readonly property int normalFontSize: ${config.my.ui.quickshell.text.size}
 
       //box style
-      readonly property int borderRadius: ${config.my.theme.quickshell.menubar.border.radius} //for all components of menubar but MusicPopup
-      readonly property int menubarBoxWidth: ${config.my.theme.quickshell.menubar.boxwidth} //Base value for all components of menubar
-      readonly property int menubarBoxHeight: ${config.my.theme.quickshell.menubar.boxheight} //Height for all menubar
+      readonly property int borderRadius: ${config.my.ui.quickshell.menubar.border.radius} //for all components of menubar but MusicPopup
+      readonly property int menubarBoxWidth: ${config.my.ui.quickshell.menubar.boxwidth} //Base value for all components of menubar
+      readonly property int menubarBoxHeight: ${config.my.ui.quickshell.menubar.boxheight} //Height for all menubar
 
 
       //Widget

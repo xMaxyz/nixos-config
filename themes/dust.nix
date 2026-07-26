@@ -68,9 +68,6 @@
     quickshell = {
       menubar = {
         background = "b3141414";
-        boxwidth = "70";
-        boxheight = "40";
-        border.radius = "10";
       };
 
       widget = {
@@ -85,7 +82,6 @@
       text = {
         foreground = "${config.my.theme.global.colors.foreground}";
         family = "${config.my.theme.global.font}";
-        size = "10";
         color = "${config.my.theme.global.colors.foreground}";
         sub.color = "d0${config.my.theme.global.colors.foreground}";
       };
