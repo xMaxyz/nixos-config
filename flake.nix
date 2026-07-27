@@ -33,7 +33,7 @@
       home-manager.users.max = import ./home/home.nix;
       home-manager.sharedModules = [
         inputs.niri.homeModules.niri
-        ./modules/custom-attrs.nix
+        ./modules/sys/custom-attrs.nix
       ];
     };
 
@@ -43,7 +43,7 @@
       specialArgs = { inherit inputs host; };
       modules = [
         ./hosts/${host}/configuration.nix
-        ./modules/custom-attrs.nix
+        ./modules/sys/custom-attrs.nix
         overlayModule
         home-manager.nixosModules.home-manager
         (homeManagerConfigModule host) # Funktion wird mit dem aktuellen Host aufgerufen

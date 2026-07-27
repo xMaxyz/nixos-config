@@ -2,8 +2,8 @@
 
 {
   imports = [
-    ../themes/current.nix
-    ../hosts/${host}/ui.nix
+    ../../themes/current.nix
+    ../../hosts/${host}/ui.nix
   ];
 
   options.my.theme = lib.mkOption {
