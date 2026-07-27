@@ -3,6 +3,7 @@
 {
   imports = [
     ../../modules/hardware/nvidia-pascal.nix
+    ../../modules/hardware/hdmi-monitor.nix
   ];
 
   hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
