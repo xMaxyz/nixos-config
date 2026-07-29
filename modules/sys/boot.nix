@@ -4,7 +4,6 @@
   boot = {
     kernelModules = [ 
       "kvm-intel" 
-      "wl" 
     ];
     
     loader = {
@@ -12,7 +11,7 @@
       efi.canTouchEfiVariables = true;
     };
 
-    initrd = {
+    initrd = { #hardware-spezifisch!
       availableKernelModules = [ 
         "uhci_hcd" 
         "ehci_pci" 
