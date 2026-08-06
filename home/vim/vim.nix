@@ -27,6 +27,7 @@
       set autoindent
       set smartindent
       filetype plugin indent on
+      set clipboard=unnamedplus
 
       set termguicolors
 
