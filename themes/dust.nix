@@ -18,8 +18,8 @@
 
     fuzzel = {
       background = "000000bb";
-      text = "cdd6f4aa";
-      prompt = "cdd6f4ff";
+      text = "cdd6f4d0"; #zusammenführen! 
+      prompt = "cdd6f4ff"; # ^^^^
       input = "${config.my.theme.global.colors.foreground}aa";
       match = "${config.my.theme.global.colors.accent}aa";
       selection = "${config.my.theme.global.colors.accent}33";
@@ -83,7 +83,7 @@
         foreground = "${config.my.theme.global.colors.foreground}";
         family = "${config.my.theme.global.font}";
         color = "${config.my.theme.global.colors.foreground}";
-        sub.color = "d0${config.my.theme.global.colors.foreground}";
+        sub.color = "d0${config.my.theme.global.colors.foreground}"; #d0 durch neuen subAlpha ersetzen!
       };
     };
 
@@ -92,8 +92,8 @@
         image.any = "6ae384";
         video.any = "6ba1c9";
         audio.any = "ff4949";
-        inode.empty = "white";
-        text.plain = "gray";
+        inode.empty = "white"; #colorNameType nutzen!
+        text.plain = "gray"; #colorNameType nutzen!
         dir = "${config.my.theme.global.colors.accent}";
       };
     };
