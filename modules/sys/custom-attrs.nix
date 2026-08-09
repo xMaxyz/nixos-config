@@ -9,12 +9,12 @@
   options.my.theme = lib.mkOption {
     type = lib.types.attrs;
     default = {};
-    description = "Entire theme including ui sizes";
+    description = "Theme that is NOT host-specific";
   };
 
   options.my.ui = lib.mkOption {
     type = lib.types.attrs;
     default = {};
-    description = "UI sizes that are referenced by config.my.theme";
+    description = "UI sizes that are referenced by config.my.ui and entirely host-specific";
   };
 }

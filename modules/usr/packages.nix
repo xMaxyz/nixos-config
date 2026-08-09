@@ -3,8 +3,6 @@
 {
   environment.systemPackages = with pkgs; [
     brightnessctl
-    prismlauncher #move into home.nix
-    
 
     (prismlauncher.override { #übergibt Java an prism
     jdks = [ graalvmPackages.graalvm-ce zulu8 zulu17 zulu ];
