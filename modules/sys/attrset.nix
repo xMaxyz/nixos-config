@@ -62,8 +62,8 @@ in
                 };
               };
 
-              apps = lib.mkOption {
-                description = "app-specific configuration";
+              desktop = lib.mkOption {
+                description = "configuration of desktop-essential apps";
                 default = {};
                 type = lib.types.submodule {
                   freeformType = lib.types.attrsOf lib.types.anything;
@@ -111,6 +111,15 @@ in
                       };
                     };
                   };
+                };
+              };
+
+              apps = lib.mkOption {
+                description = "app-specific configuration";
+                default = {};
+                type = lib.types.submodule {
+                  freeformType = lib.types.attrsOf lib.types.anything;
+                  options = {};
                 };
               };
 
