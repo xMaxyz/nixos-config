@@ -1,9 +1,19 @@
 { config, lib, ... }:
 
 let 
-  hexColorType = lib.types.strMatching "^#?([0-9a-f]{1,6}|[0-9a-fA-F]{8})$";
-  colorNameType = lib.types.enum [ "white" "black" "blue" "yellow" "red" "green" "gray" "purple" ];
+  
   alphaChannelType = lib.types.strMatching "^[0-9a-f]{2}$";
+  numbersign = lib.types.enum [ "#" ];
+
+  unhashedRgbType = lib.types.strMatching "^[0-9a-f]{6}$";
+  unhashedRgbaType = lib.types.tuple [ unhashedRgbType alphaChannelType ]; 
+  unhashedArgbType = lib.types.tuple [ alphaChannelType unhashedRgbType ]; #typically used by quickshell
+
+  hashedRgbType = lib.types.tuple [ numbersign unhashedRgbType ];
+  hashedRgbaType = lib.types.tuple [ numbersign unhashedRgbType alphaChannelType ];
+  hashedArgbType = lib.types.tuple [ numbersign alphaChannelType unhashedRgbType ];
+
+  colorNameType = lib.types.enum [ "white" "black" "blue" "yellow" "red" "green" "gray" "purple" ];
 in 
 {
   options.my.host = lib.mkOption {
@@ -27,7 +37,12 @@ in
                     accent = lib.mkOption {
                       description = "central color the theme is build around";
                       default = "0000ff";
-                      type = hexColorType;
+                      type = unhashedRgbType;
+                    };
+                    radius = lib.mkOption {
+                      description = "unified border radius of ui rectangles";
+                      default = 10;
+                      type = lib.types.ints.unsigned;
                     };
                     wallpaper = lib.mkOption {
                       description = "path to the wallpaper";
@@ -42,7 +57,7 @@ in
                           foreground = lib.mkOption {
                             description = "color of normal, unformatted text";
                             default = "ffffff";
-                            type = hexColorType;
+                            type = unhashedRgbType;
                           };
                           subAlpha = lib.mkOption {
                             description = "Unified alpha-channel of RGBA/ARGB Code for subtext";
@@ -88,11 +103,11 @@ in
                             default = {};
                             type = lib.types.submodule {
                               options = {
-                                inactive-color = lib.mkOption { default = "#aaaaaa"; type = hexColorType; };
-                                urgent-color = lib.mkOption { default = "#ff0000"; type = hexColorType; };
+                                inactive-color = lib.mkOption { default = [ "#" "aaaaaa" "ff" ]; type = hashedRgbaType; };
+                                urgent-color = lib.mkOption { default = [ "#" "ff0000" "ff" ]; type = hashedRgbaType; };
                                 active-gradient = lib.mkOption {
-                                  default = [];
-                                  type = lib.types.tuple [ hexColorType hexColorType ];
+                                  default = null;
+                                  type = lib.types.nullOr (lib.types.tuple [ hashedRgbaType hashedRgbaType ]); # [ [ "# ""rgb" "a" ] [ "#" "rgb" "a" ] ]
                                 };
                               };
                             };
@@ -106,7 +121,87 @@ in
                       default = {};
                       type = lib.types.submodule {
                         options = {
-                          
+                          menubar = lib.mkOption {
+                            description = "config for quickshell's menubar";
+                            default = {};
+                            type = lib.types.submodule {
+                              options = {
+                                box = lib.mkOption {
+                                  description = "dimensions of each element in menubar";
+                                  default = {};
+                                  type = lib.types.submodule {
+                                    options = {
+                                      width = lib.mkOption { type = lib.types.ints.unsigned; default = 70; };
+                                      height = lib.mkOption { type = lib.types.ints.unsigned; default = 40; };
+                                      radius = lib.mkOption { type = lib.types.ints.unsigned; default = 10; };
+                                      background = lib.mkOption { type = hashedArgbType; default = [ "#" "d0" "ffffff" ]; };
+                                    };
+                                  };
+                                };
+                                text = lib.mkOption {
+                                  description = "text formatting for menubar";
+                                  default = {};
+                                  type = lib.types.submodule {
+                                    options = {
+                                      color = lib.mkOption { type = hashedArgbType; default = [ "#" "ff" "ffffff" ]; };
+                                      size = lib.mkOption { type = lib.types.ints.unsigned; default = 10; };
+                                    };
+                                  };
+                                };
+                              };
+                            };
+                          };
+
+                          widget = lib.mkOption {
+                            description = "config for quickshell widgets";
+                            default = {};
+                            type = lib.types.submodule {
+                              options = {
+                                clock = lib.mkOption {
+                                  description = "config for quickshell clock widget";
+                                  default = {};
+                                  type = lib.types.submodule {
+                                    options = {
+                                      box = lib.mkOption {
+                                        description = "config for widget clock box";
+                                        default = {};
+                                        type = lib.types.submodule {
+                                          options = {
+                                            background = lib.mkOption { type = hashedArgbType; default = [ "#" "25" "000000" ]; };
+                                            height = lib.mkOption { type = lib.types.ints.unsigned; default = 140; };
+                                          };
+                                        };
+                                      };
+                                      border = lib.mkOption {
+                                        description = "config for border of clock widget";
+                                        default = {};
+                                        type = lib.types.submodule {
+                                          options = {
+                                            color = lib.mkOption { type = hashedArgbType; default = [ "#" "d0" "ffffff" ]; };
+                                            width = lib.mkOption { type = lib.types.ints.unsigned; default = 1; };
+                                          };
+                                        };
+                                      };
+                                      text = lib.mkOption {
+                                        description = "text formatting of clock widget";
+                                        default = {};
+                                        type = lib.types.submodule {
+                                          options = {
+                                            topColor = lib.mkOption { type = hashedArgbType; default = [ "#" "ff" "ffffff" ]; };
+                                            topSize = lib.mkOption { type = lib.types.ints.unsigned; default = 34; };
+                                            subColor = lib.mkOption { type = hashedArgbType; default = [ "#" "d0" "ffffff" ]; };
+                                            subSize = lib.mkOption { type = lib.types.ints.unsigned; default = 13; };
+                                          };
+                                        };
+                                      };
+                                    };
+                                  };
+                                };
+                                zonewidth = lib.mkOption { type = lib.types.numbers.between 0.0 1.0; default = 0.3; };
+
+                              };
+                            };
+                          };
                         };
                       };
                     };

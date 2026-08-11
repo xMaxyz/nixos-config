@@ -54,10 +54,10 @@
       };
     };
 
-    niri = {
+    niri = { #alles unhashedRgbaType
       border = {
         inactive-color = "595959aa";
-        urgent-color = "9b0000";
+        urgent-color = "9b0000ff";
         active-gradient = {
           from = "${config.my.theme.global.colors.accent}ee";
           to = "fdaa6bee";
