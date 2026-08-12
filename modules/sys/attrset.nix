@@ -334,10 +334,95 @@ in
                       default = {};
                       type = lib.types.submodule {
                         options = {
-
+                          box = lib.mkOption {
+                            description = "fuzzel whole box config";
+                            default = {};
+                            type = lib.types.submodule {
+                              options = {
+                                background = lib.mkOption {
+                                  description = "background color of fuzzel menu";
+                                  default = [ default.black default.alpha.transparent ];
+                                  type = unhashedRgbaType;
+                                };
+                                border = lib.mkOption {
+                                  description = "border color of fuzzel menu";
+                                  default = [ default.blue default.alpha.transparent ];
+                                  type = unhashedRgbaType;
+                                };
+                              };
+                            };
+                          };
+                          search = lib.mkOption {
+                            description = "config of fuzzel search bar";
+                            default = {};
+                            type = lib.types.submodule {
+                              options = {
+                                prompt = lib.mkOption {
+                                  description = "color of fuzzel prompt";
+                                  default = [ default.blue default.alpha.solid ];
+                                  type = unhashedRgbaType;
+                                };
+                                input = lib.mkOption {
+                                  description = "user input in fuzzel search bar";
+                                  default = [ default.blue default.alpha.solid ];
+                                  type = unhashedRgbaType;
+                                };
+                              };
+                            };
+                          };
+                          list = lib.mkOption {
+                            description = "fuzzel's result list";
+                            default = {};
+                            type = lib.types.submodule {
+                              options = {
+                                unselected = lib.mkOption {
+                                  description = "unselected programs in fuzzel";
+                                  default = {};
+                                  type = lib.types.submodule {
+                                    options = {
+                                      text = lib.mkOption {
+                                        description = "normal text in unselected programs";
+                                        default = [ default.white default.alpha.transparent ];
+                                        type = unhashedRgbaType;
+                                      };
+                                      match = lib.mkOption {
+                                        description = "color of matching letters in unselected programs";
+                                        default = [ default.blue default.alpha.transparent ];
+                                        type = unhashedRgbaType;
+                                      };
+                                    };
+                                  };
+                                };
+                                selected = lib.mkOption {
+                                  description = "colors of selected programs";
+                                  default = {};
+                                  type = lib.types.submodule {
+                                    options = {
+                                      background = lib.mkOption {
+                                        description = "background of selected programs";
+                                        default = [ default.black default.alpha.transparent ];
+                                        type = unhashedRgbaType;
+                                      };
+                                      text = lib.mkOption {
+                                        description = "normal text in selected program";
+                                        default = [ default.white default.alpha.solid ];
+                                        type = unhashedRgbaType;
+                                      };
+                                      match = lib.mkOption {
+                                        description = "matching letters in selected program";
+                                        default = [ default.blue default.alpha.solid ];
+                                        type = unhashedRgbaType;
+                                      };
+                                    };
+                                  };
+                                };
+                              };
+                            };
+                          };
                         };
                       };
                     };
+
                   };
                 };
               };

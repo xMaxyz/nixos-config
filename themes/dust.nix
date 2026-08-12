@@ -17,15 +17,15 @@
     };
 
     fuzzel = {
-      background = "000000bb";
+      background = "000000bb"; #box
       text = "cdd6f4d0"; #zusammenführen! 
       prompt = "cdd6f4ff"; # ^^^^
       input = "${config.my.theme.global.colors.foreground}aa";
-      match = "${config.my.theme.global.colors.accent}aa";
-      selection = "${config.my.theme.global.colors.accent}33";
-      selection-text = "${config.my.theme.global.colors.foreground}ff";
-      selection-match = "${config.my.theme.global.colors.accent}ff";
-      border = "${config.my.theme.global.colors.accent}ee";
+      match = "${config.my.theme.global.colors.accent}aa"; 
+      selection = "${config.my.theme.global.colors.accent}33"; #selection
+      selection-text = "${config.my.theme.global.colors.foreground}ff"; #selection
+      selection-match = "${config.my.theme.global.colors.accent}ff"; #selection
+      border = "${config.my.theme.global.colors.accent}ee"; #box
     };
 
     dunst = {
