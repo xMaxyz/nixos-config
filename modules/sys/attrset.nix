@@ -28,6 +28,7 @@ let
   hashedRgbaType = lib.types.tuple [ numbersign unhashedRgbType alphaChannelType ];
   hashedArgbType = lib.types.tuple [ numbersign alphaChannelType unhashedRgbType ];
   colorNameType = lib.types.enum [ "white" "black" "blue" "yellow" "red" "green" "gray" "purple" ];
+  
 in 
 {
   options.my.host = lib.mkOption {
@@ -432,7 +433,24 @@ in
                 default = {};
                 type = lib.types.submodule {
                   freeformType = lib.types.attrsOf lib.types.anything;
-                  options = {};
+                  options = {
+                    
+                    yazi = lib.mkOption {
+                      description = "cli file manager";
+                      default = {};
+                      type = lib.types.submodule {
+                        options = {
+                          mime = lib.mkOption {
+                            description = "colors based on mime type";
+                            default = {};
+                            type = lib.types.submodule {
+                              freeformType = lib.types.attrsOf (lib.types.attrsOf hashedRgbType);
+                            };
+                          };
+                        };
+                      };
+                    };
+                  };
                 };
               };
 
