@@ -230,22 +230,30 @@ in
                       default = {};
                       type = lib.types.submodule {
                         options = {
-                          global = lib.mkOption {
-                            description = "attributes mapping to dunst home-manager module";
+                          box = lib.mkOption {
+                            description = "dunst config for the notify-boxes";
                             default = {};
                             type = lib.types.submodule {
                               options = {
+                                background = lib.mkOption { type = hashedRgbaType; default = [ "#" default.blue default.alpha.transparent ]; };
+                                foreground = lib.mkOption { type = hashedRgbaType; default = [ "#" default.white default.alpha.solid ]; };
+                                transparency = lib.mkOption { type = lib.types.ints.unsigned; default = 10; };
                                 origin = lib.mkOption {
                                   description = "position of notifies";
                                   default = "top-right";
                                   type = lib.types.enum [ "top-right" "top-left" "bottom-right" "bottom-left" ];
                                 };
-                                corner_radius = lib.mkOption { type = lib.types.ints.unsigned; default = default.radius; };
-                                frame_width = lib.mkOption { type = lib.types.ints.unsigned; default = 1; };
-                                transparency = lib.mkOption { type = lib.types.ints.unsigned; default = 10; };
-                                background = lib.mkOption { type = hashedRgbaType; default = [ "#" default.blue default.alpha.transparent ]; };
-                                foreground = lib.mkOption { type = hashedRgbType; default = [ "#" default.white ]; };
-                                frame_color = lib.mkOption { type = hashedRgbType; default = [ "#" default.gray ]; };
+                              };
+                            };
+                          };
+                          border = lib.mkOption {
+                            description = "dunst config for the borders";
+                            default = {};
+                            type = lib.types.submodule {
+                              options = {
+                                color = lib.mkOption { type = hashedRgbType; default = [ "#" default.gray ]; };
+                                width = lib.mkOption { type = lib.types.ints.unsigned; default = 1; };
+                                radius = lib.mkOption { type = lib.types.ints.unsigned; default = default.radius; };
                               };
                             };
                           };
@@ -317,6 +325,16 @@ in
                               };
                             };
                           };
+                        };
+                      };
+                    };
+
+                    fuzzel = lib.mkOption {
+                      description = "app-launcher config";
+                      default = {};
+                      type = lib.types.submodule {
+                        options = {
+
                         };
                       };
                     };
