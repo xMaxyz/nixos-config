@@ -2,17 +2,31 @@
 
 let 
   
+  #central default values used in this very file
+  default = {
+    radius = 10;
+    white = "ffffff";
+    gray = "aaaaaa";
+    black = "000000";
+    blue = "0000ff";
+    red = "ff0000";
+    green = "00ff00";
+    alpha = {
+      transparent = "d0";
+      solid = "ff";
+    };
+    textSize = 11;
+  };
+  
+  #everything used for colors
   alphaChannelType = lib.types.strMatching "^[0-9a-f]{2}$";
   numbersign = lib.types.enum [ "#" ];
-
   unhashedRgbType = lib.types.strMatching "^[0-9a-f]{6}$";
   unhashedRgbaType = lib.types.tuple [ unhashedRgbType alphaChannelType ]; 
   unhashedArgbType = lib.types.tuple [ alphaChannelType unhashedRgbType ]; #typically used by quickshell
-
   hashedRgbType = lib.types.tuple [ numbersign unhashedRgbType ];
   hashedRgbaType = lib.types.tuple [ numbersign unhashedRgbType alphaChannelType ];
   hashedArgbType = lib.types.tuple [ numbersign alphaChannelType unhashedRgbType ];
-
   colorNameType = lib.types.enum [ "white" "black" "blue" "yellow" "red" "green" "gray" "purple" ];
 in 
 {
@@ -36,12 +50,12 @@ in
                   options = {
                     accent = lib.mkOption {
                       description = "central color the theme is build around";
-                      default = "0000ff";
+                      default = default.blue;
                       type = unhashedRgbType;
                     };
                     radius = lib.mkOption {
                       description = "unified border radius of ui rectangles";
-                      default = 10;
+                      default = default.radius;
                       type = lib.types.ints.unsigned;
                     };
                     wallpaper = lib.mkOption {
@@ -56,12 +70,12 @@ in
                         options = {
                           foreground = lib.mkOption {
                             description = "color of normal, unformatted text";
-                            default = "ffffff";
+                            default = default.white;
                             type = unhashedRgbType;
                           };
                           subAlpha = lib.mkOption {
                             description = "Unified alpha-channel of RGBA/ARGB Code for subtext";
-                            default = "d0";
+                            default = default.alpha.transparent;
                             type = alphaChannelType;
 
                           };
@@ -69,6 +83,11 @@ in
                             description = "font used in all ui elements";
                             default = "JetBrainsMono Nerd Font";
                             type = lib.types.str;
+                          };
+                          size = lib.mkOption {
+                            description = "text size for normal text";
+                            default = 11;
+                            type = lib.types.ints.unsigned;
                           };
                         };
                       };
@@ -103,8 +122,8 @@ in
                             default = {};
                             type = lib.types.submodule {
                               options = {
-                                inactive-color = lib.mkOption { default = [ "#" "aaaaaa" "ff" ]; type = hashedRgbaType; };
-                                urgent-color = lib.mkOption { default = [ "#" "ff0000" "ff" ]; type = hashedRgbaType; };
+                                inactive-color = lib.mkOption { default = [ "#" default.gray default.alpha.solid ]; type = hashedRgbaType; };
+                                urgent-color = lib.mkOption { default = [ "#" "ff0000" default.alpha.solid ]; type = hashedRgbaType; };
                                 active-gradient = lib.mkOption {
                                   default = null;
                                   type = lib.types.nullOr (lib.types.tuple [ hashedRgbaType hashedRgbaType ]); # [ [ "# ""rgb" "a" ] [ "#" "rgb" "a" ] ]
@@ -133,8 +152,8 @@ in
                                     options = {
                                       width = lib.mkOption { type = lib.types.ints.unsigned; default = 70; };
                                       height = lib.mkOption { type = lib.types.ints.unsigned; default = 40; };
-                                      radius = lib.mkOption { type = lib.types.ints.unsigned; default = 10; };
-                                      background = lib.mkOption { type = hashedArgbType; default = [ "#" "d0" "ffffff" ]; };
+                                      radius = lib.mkOption { type = lib.types.ints.unsigned; default = default.radius; };
+                                      background = lib.mkOption { type = hashedArgbType; default = [ "#" default.alpha.transparent default.white ]; };
                                     };
                                   };
                                 };
@@ -143,8 +162,8 @@ in
                                   default = {};
                                   type = lib.types.submodule {
                                     options = {
-                                      color = lib.mkOption { type = hashedArgbType; default = [ "#" "ff" "ffffff" ]; };
-                                      size = lib.mkOption { type = lib.types.ints.unsigned; default = 10; };
+                                      color = lib.mkOption { type = hashedArgbType; default = [ "#" default.alpha.solid default.white ]; };
+                                      size = lib.mkOption { type = lib.types.ints.unsigned; default = default.textSize; };
                                     };
                                   };
                                 };
@@ -167,7 +186,7 @@ in
                                         default = {};
                                         type = lib.types.submodule {
                                           options = {
-                                            background = lib.mkOption { type = hashedArgbType; default = [ "#" "25" "000000" ]; };
+                                            background = lib.mkOption { type = hashedArgbType; default = [ "#" default.alpha.transparent default.black ]; };
                                             height = lib.mkOption { type = lib.types.ints.unsigned; default = 140; };
                                           };
                                         };
@@ -177,7 +196,7 @@ in
                                         default = {};
                                         type = lib.types.submodule {
                                           options = {
-                                            color = lib.mkOption { type = hashedArgbType; default = [ "#" "d0" "ffffff" ]; };
+                                            color = lib.mkOption { type = hashedArgbType; default = [ "#" default.alpha.transparent default.white ]; };
                                             width = lib.mkOption { type = lib.types.ints.unsigned; default = 1; };
                                           };
                                         };
@@ -187,9 +206,9 @@ in
                                         default = {};
                                         type = lib.types.submodule {
                                           options = {
-                                            topColor = lib.mkOption { type = hashedArgbType; default = [ "#" "ff" "ffffff" ]; };
+                                            topColor = lib.mkOption { type = hashedArgbType; default = [ "#" default.alpha.solid default.white ]; };
                                             topSize = lib.mkOption { type = lib.types.ints.unsigned; default = 34; };
-                                            subColor = lib.mkOption { type = hashedArgbType; default = [ "#" "d0" "ffffff" ]; };
+                                            subColor = lib.mkOption { type = hashedArgbType; default = [ "#" default.alpha.transparent default.white ]; };
                                             subSize = lib.mkOption { type = lib.types.ints.unsigned; default = 13; };
                                           };
                                         };
@@ -199,6 +218,102 @@ in
                                 };
                                 zonewidth = lib.mkOption { type = lib.types.numbers.between 0.0 1.0; default = 0.3; };
 
+                              };
+                            };
+                          };
+                        };
+                      };
+                    };
+
+                    dunst = lib.mkOption {
+                      description = "notify-daemon config";
+                      default = {};
+                      type = lib.types.submodule {
+                        options = {
+                          global = lib.mkOption {
+                            description = "attributes mapping to dunst home-manager module";
+                            default = {};
+                            type = lib.types.submodule {
+                              options = {
+                                origin = lib.mkOption {
+                                  description = "position of notifies";
+                                  default = "top-right";
+                                  type = lib.types.enum [ "top-right" "top-left" "bottom-right" "bottom-left" ];
+                                };
+                                corner_radius = lib.mkOption { type = lib.types.ints.unsigned; default = default.radius; };
+                                frame_width = lib.mkOption { type = lib.types.ints.unsigned; default = 1; };
+                                transparency = lib.mkOption { type = lib.types.ints.unsigned; default = 10; };
+                                background = lib.mkOption { type = hashedRgbaType; default = [ "#" default.blue default.alpha.transparent ]; };
+                                foreground = lib.mkOption { type = hashedRgbType; default = [ "#" default.white ]; };
+                                frame_color = lib.mkOption { type = hashedRgbType; default = [ "#" default.gray ]; };
+                              };
+                            };
+                          };
+                          urgency = lib.mkOption {
+                            description = "urgency-specific coloring";
+                            default = {};
+                            type = lib.types.submodule {
+                              options = {
+                                normal = lib.mkOption {
+                                  description = "normal notifies";
+                                  default = {};
+                                  type = lib.types.submodule {
+                                    options = {
+                                      background = lib.mkOption {
+                                        default = [ "#" default.green default.alpha.transparent ];
+                                        type = hashedRgbaType;
+                                      };
+                                      foreground = lib.mkOption {
+                                        default = [ "#" default.white default.alpha.solid ];
+                                        type = hashedRgbaType;
+                                      };
+                                      frame_color = lib.mkOption {
+                                        default = [ "#" default.green default.alpha.solid ];
+                                        type = hashedRgbaType;
+                                      };
+                                    };
+                                  };
+                                };
+                                low = lib.mkOption {
+                                  description = "low-urgency notifies";
+                                  default = {};
+                                  type = lib.types.submodule {
+                                    options = {
+                                      background = lib.mkOption {
+                                        default = [ "#" default.gray default.alpha.transparent ];
+                                        type = hashedRgbaType;
+                                      };
+                                      foreground = lib.mkOption {
+                                        default = [ "#" default.gray default.alpha.solid ];
+                                        type = hashedRgbaType;
+                                      };
+                                      frame_color = lib.mkOption {
+                                        default = [ "#" default.gray default.alpha.solid ];
+                                        type = hashedRgbaType;
+                                      };
+                                    };
+                                  };
+                                };
+                                critical = lib.mkOption {
+                                  description = "critical notifies";
+                                  default = {};
+                                  type = lib.types.submodule {
+                                    options = {
+                                      background = lib.mkOption {
+                                        default = [ "#" default.red default.alpha.transparent ];
+                                        type = hashedRgbaType;
+                                      };
+                                      foreground = lib.mkOption {
+                                        default = [ "#" default.white default.alpha.solid ];
+                                        type = hashedRgbaType;
+                                      };
+                                      frame_color = lib.mkOption {
+                                        default = [ "#" default.red default.alpha.solid ];
+                                        type = hashedRgbaType;
+                                      };
+                                    };
+                                  };
+                                };
                               };
                             };
                           };

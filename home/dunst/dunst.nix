@@ -12,10 +12,10 @@
         origin = "top-right";
         offset = "(15, 15)";
         corner_radius = "12";
-        frame_width = "2";
+        frame_width = "2"; # lib.toString my.host.ui.desktop.dunst.global.frame_width
         gap_size = "8";
         transparency = "10";
-        font = "${config.my.theme.global.font} 11";
+        font = "${config.my.theme.global.font} 11"; # "${config.my.host.ui.global.text.font} ${config.my.host.ui.global.text.size}"
         background = "#${config.my.theme.dunst.colors.background}";
         foreground = "#${config.my.theme.dunst.colors.foreground}";
         frame_color = "#${config.my.theme.dunst.colors.frame_color}";
