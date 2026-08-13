@@ -11,13 +11,13 @@ Item {
 
         height: Theme.menubarBoxHeight
         width: Theme.menubarBoxWidth
-        radius: Theme.borderRadius
-        color: Theme.menubarBackground
+        radius: Theme.menubarBoxRadius
+        color: Theme.menubarBoxBackground
 
         Text {
             id: clockText
-            color: Theme.foreground
-            font.pointSize: Theme.normalFontSize
+            color: Theme.menubarTextColor
+            font.pointSize: Theme.menubarTextSize
             font.family: Theme.fontFamily
             anchors.centerIn: parent
             text: Qt.formatTime(new Date(), "hh:mm")

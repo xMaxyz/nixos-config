@@ -1,4 +1,12 @@
-{ config, pkgs, inputs, ... }:
+{ config, pkgs, inputs, lib, ... }:
+
+let
+
+  hex = lib.concatStrings;
+  qs = config.my.host.ui.desktop.quickshell;
+  g = config.my.host.ui.global;
+
+in
 
 {
   programs.quickshell = {
@@ -27,26 +35,39 @@
     import QtQuick
 
     QtObject {
-      //colors
-      property color menubarBackground: "#${config.my.theme.quickshell.menubar.background}" //background for components of menubar
-      property color widgetBackground: "#${config.my.theme.quickshell.widget.background}"
-      property color widgetBorderColor: "#${config.my.theme.quickshell.widget.border.color}"
-      property color accent: "#${config.my.theme.quickshell.accent}"
-      property color foreground: "#${config.my.theme.quickshell.text.color}" //text color
-      property color widgetSubtext: "#${config.my.theme.quickshell.widget.subtext}"
+      property string fontFamily: "${g.text.font}"
+      property color accent: "#${g.accent}"
+      property string wallpaper: "${g.wallpaper}"
+      
+      //Menubar-Box
+      property color menubarBoxBackground: "${hex qs.menubar.box.background}"
+      property int menubarBoxRadius: ${qs.menubar.box.radius}
+      property int menubarBoxWidth: ${qs.menubar.box.width}
+      property int menubarBoxHeight: ${qs.menubar.box.height}
 
-      //fonts
-      readonly property string fontFamily: "${config.my.theme.quickshell.text.family}"
-      readonly property int normalFontSize: ${config.my.ui.quickshell.text.size}
-
-      //box style
-      readonly property int borderRadius: ${config.my.ui.quickshell.menubar.border.radius} //for all components of menubar but MusicPopup
-      readonly property int menubarBoxWidth: ${config.my.ui.quickshell.menubar.boxwidth} //Base value for all components of menubar
-      readonly property int menubarBoxHeight: ${config.my.ui.quickshell.menubar.boxheight} //Height for all menubar
+      //Menubar-Text
+      property color menubarTextColor: "${hex qs.menubar.text.color}"
+      property int menubarTextSize: ${qs.menubar.text.size}
 
 
       //Widget
-      readonly property real widgetzoneWidth: ${config.my.theme.quickshell.widget.zonewidth}
+      property real zoneWidth: ${qs.widget.zonewidth}
+
+      //Widget-Clock-Box
+      property color widgetClockBoxBackground: "${hex qs.widget.clock.box.background}"
+      property int widgetClockBoxHeight: ${qs.widget.clock.box.height}
+
+      //Widget-Clock-Border
+      property color widgetClockBorderColor: "${hex qs.widget.clock.border.color}"
+      property int widgetClockBorderWidth: ${qs.widget.clock.border.width}
+      property int widgetClockBorderRadius: ${qs.widget.clock.border.radius}
+
+      //Widget-Clock-Text
+      property color widgetClockTextTopColor: "${hex qs.widget.clock.text.topColor}"
+      property color widgetClockTextSubColor: "${hex qs.widget.clock.text.subColor}"
+      property int widgetClockTextTopSize: ${qs.widget.clock.text.topSize}
+      property int widgetClockTextSubSize: ${qs.widget.clock.text.subSize}
+
     }
   '';
 

@@ -1,5 +1,9 @@
-{ config, pkgs, ... }:
+{ config, lib, ... }:
 
+let
+  hex = lib.concatStrings;
+  n = config.my.host.ui.desktop.niri;
+in
 {
   programs.niri.settings = {
     layout = {
@@ -16,11 +20,11 @@
       border = {
         enable = true;
         width = 2;
-        inactive.color = "#${config.my.theme.niri.border.inactive-color}";
-        urgent.color = "#${config.my.theme.niri.border.urgent-color}";
+        inactive.color = hex n.border.inactive-color;
+        urgent.color = hex n.border.urgent-color;
         active.gradient = {
-          from = "#${config.my.theme.niri.border.active-gradient.from}";
-          to = "#${config.my.theme.niri.border.active-gradient.to}";
+          from = hex d.border.active-gradient.from;
+          to = hex d.border.active-gradient.to;
           angle = 45;
           relative-to = "workspace-view";
         };

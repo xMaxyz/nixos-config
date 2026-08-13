@@ -1,13 +1,25 @@
-{config, ... }:
+{ lib, config, ... }:
 
 {
-  config.my.ui.quickshell = {
-    menubar = {
-      boxwidth = "70";
-      boxheight = "40";
-      border.radius = "10";
-    };
+  config.my.host.ui = {
+    desktop.quickshell = {
+      menubar = {
+        box = {
+          width = 70;
+          height = 40;
+        };
+        text.size = config.my.host.ui.global.text.size;
+      };
 
-    text.size = "10";
+      widget = {
+        clock = {
+          box.height = 140;
+          text = {
+            topSize = 34;
+            subSize = 13;
+          };
+        };
+      };
+    };
   };
 }

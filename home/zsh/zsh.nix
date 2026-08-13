@@ -1,5 +1,7 @@
 { config, pkgs, ... }:
-
+let 
+  z = config.my.host.ui.desktop.zsh;
+in
 {
   programs.zsh = {
     enable = true;
@@ -22,8 +24,8 @@
     };
 
     initContent = ''
-      PROMPT="${config.my.theme.zsh.prompt}";
-      RPROMPT="${config.my.theme.zsh.rprompt}";
+      PROMPT="${z.prompt}";
+      RPROMPT="${z.rprompt}";
     '';
 
     autosuggestion.enable = true;

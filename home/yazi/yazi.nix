@@ -1,5 +1,8 @@
-{ pkgs, config, ... }:
-
+{ pkgs, config, lib, ... }:
+let
+  hex = lib.concatStrings;
+  y = config.my.host.ui.apps.yazi;
+in
 {
   programs.yazi = {
     enable = true;
@@ -36,12 +39,12 @@
     theme = {
       filetype = {
         rules = [
-          { mime = "image/*"; fg = "#${config.my.theme.yazi.color.mime.image.any}"; }
-	        { mime = "video/*"; fg = "#${config.my.theme.yazi.color.mime.video.any}"; }
-	        { mime = "audio/*"; fg = "#${config.my.theme.yazi.color.mime.audio.any}"; }
-	        { mime = "inode/empty"; fg = "${config.my.theme.yazi.color.mime.inode.empty}"; }
-	        { mime = "text/plain"; fg = "${config.my.theme.yazi.color.mime.text.plain}"; }
-	        { url = "*/"; fg = "#${config.my.theme.yazi.color.mime.dir}"; }
+          { mime = "image/*"; fg = (hex y.mime.image.any); }
+	        { mime = "video/*"; fg = (hex y.mime.video.any); }
+	        { mime = "audio/*"; fg = (hex y.mime.audio.any); }
+	        { mime = "inode/empty"; fg = y.mime.inode.empty; }
+	        { mime = "text/plain"; fg = y.mime.text.plain; }
+	        { url = "*/"; fg = (hex y.mime.dir); }
         ];
       };
     };

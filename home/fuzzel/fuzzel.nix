@@ -1,5 +1,8 @@
-{ config, pkgs, ... }:
-
+{ config, lib, ... }:
+let
+  f = config.my.host.ui.desktop.fuzzel;
+  hex = lib.concatStrings;
+in
 {
   programs.fuzzel = {
     enable = true;
@@ -29,15 +32,15 @@
       };
 
       colors = {
-        background = "${config.my.theme.fuzzel.background}";
-        text = "${config.my.theme.fuzzel.text}";
-        prompt = "${config.my.theme.fuzzel.prompt}";
-        input = "${config.my.theme.fuzzel.input}";
-        match = "${config.my.theme.fuzzel.match}";
-        selection = "${config.my.theme.fuzzel.selection}";
-        selection-text = "${config.my.theme.fuzzel.selection-text}";
-        selection-match = "${config.my.theme.fuzzel.selection-match}";
-        border = "${config.my.theme.fuzzel.border}";
+        background = hex f.box.background;
+        text = hex f.list.unselected.text;
+        prompt = hex f.search.prompt;
+        input = hex f.search.input;
+        match = hex.list.unselected.match;
+        selection = hex f.list.selected.background;
+        selection-text = hex f.list.selected.text;
+        selection-match = hex f.list.selected.match;
+        border = hex f.box.border;
       };
     };
   };

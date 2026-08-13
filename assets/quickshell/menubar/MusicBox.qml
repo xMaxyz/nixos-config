@@ -10,9 +10,9 @@ Rectangle {
 
     width: Math.max(Theme.menubarBoxWidth, mediaText.implicitWidth + 20)
     height: Theme.menubarBoxHeight
-    radius: Theme.borderRadius
+    radius: Theme.menubarBoxRadius
     clip: true
-    color: Theme.menubarBackground
+    color: Theme.menubarBoxBackground
 
     //Timer for bridge between MusicBox and popup
     Timer {
@@ -93,9 +93,9 @@ Rectangle {
         width: parent.width - 24
         elide: Text.ElideRight
         horizontalAlignment: Text.AlignHCenter
-        font.pointSize: Theme.normalFontSize
+        font.pointSize: Theme.menubarTextSize
         font.family: Theme.fontFamily
-        color: Theme.foreground
+        color: Theme.menubarTextColor
         text: mediaBox.currentTrack
     }
 }

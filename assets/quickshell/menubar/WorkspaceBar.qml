@@ -11,9 +11,9 @@ Rectangle {
 
     //Aussehen der Hintergrund-Box
     height: Theme.menubarBoxHeight
-    radius: Theme.borderRadius
+    radius: Theme.menubarBoxRadius
     implicitWidth: rowWorkspaces.width + (workspacebar.horizontalPadding * 2)
-    color: Theme.menubarBackground
+    color: Theme.menubarBoxBackground
 
     //Elemente
     Row {
@@ -27,7 +27,7 @@ Rectangle {
             delegate: Text {
                 //allg. Aussehen
                 text: modelData.id
-                font.pointSize: Theme.normalFontSize
+                font.pointSize: Theme.menubarTextSize
                 opacity: 1.0
                 visible: modelData.id > 0
                 

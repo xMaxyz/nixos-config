@@ -59,6 +59,11 @@ let
   
 in 
 {
+  imports = [
+    ../../themes/current.nix
+    ../../hosts/${host}/ui.nix
+  ];
+  
   options.my.host = lib.mkOption {
     description = "Unified host-wide configuration attribute set";
     default = {};
@@ -154,8 +159,13 @@ in
                                 inactive-color = lib.mkOption { default = [ "#" default.gray default.alpha.solid ]; type = hashedRgbaType; };
                                 urgent-color = lib.mkOption { default = [ "#" "ff0000" default.alpha.solid ]; type = hashedRgbaType; };
                                 active-gradient = lib.mkOption {
-                                  default = null;
-                                  type = lib.types.nullOr (lib.types.tuple [ hashedRgbaType hashedRgbaType ]); # [ [ "# ""rgb" "a" ] [ "#" "rgb" "a" ] ]
+                                  default = {};
+                                  type = lib.types.submodule {
+                                    options = {
+                                      from = lib.mkOption { type = hashedRgbaType; default = [ "#" default.blue default.alpha.transparent ]; };
+                                      to = lib.mkOption { type = hashedRgbaType; default = [ "#" default.red default.alpha.transparent ]; };
+                                    };
+                                  }; 
                                 };
                               };
                             };
@@ -227,6 +237,7 @@ in
                                           options = {
                                             color = lib.mkOption { type = hashedArgbType; default = [ "#" default.alpha.transparent default.white ]; };
                                             width = lib.mkOption { type = lib.types.ints.unsigned; default = 1; };
+                                            radius = lib.mkOption { type = lib.types.ints.unsigned; default = default.radius; };
                                           };
                                         };
                                       };
@@ -478,7 +489,7 @@ in
                                 )
                               ));
                               options = {
-                                dir = lib.mkOption { type = hashedRgbType; default = default.blue; };
+                                dir = lib.mkOption { type = hashedRgbType; default = [ "#" default.blue ]; };
                               };
                             };
                           };

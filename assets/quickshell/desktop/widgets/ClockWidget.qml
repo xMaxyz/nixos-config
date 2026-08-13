@@ -7,12 +7,12 @@ Rectangle {
     
     //width equals assigned widget zone width
     Layout.fillWidth: true
-    Layout.preferredHeight: 140
+    Layout.preferredHeight: Theme.widgetClockBoxHeight
     
-    color: Theme.widgetBackground
-    radius: Theme.borderRadius
-    border.color: Theme.widgetBorderColor
-    border.width: 1
+    color: Theme.widgetClockBoxBackground
+    radius: Theme.widgetClockBorderRadius
+    border.color: Theme.widgetClockBorderColor
+    border.width: Theme.widgetClockBorderWidth
 
     //Timer to update time every second
     Timer {
@@ -38,8 +38,8 @@ Rectangle {
         Text {
             id: timeText
             Layout.alignment: Qt.AlignHCenter
-            color: Theme.foreground
-            font.pointSize: 34
+            color: Theme.widgetClockTexTopColor
+            font.pointSize: Theme.widgetClockTextTopSize
             font.weight: Font.Bold
             font.family: Theme.fontFamily
             renderType: Text.NativeRendering
@@ -49,8 +49,8 @@ Rectangle {
         Text {
             id: dateText
             Layout.alignment: Qt.AlignHCenter
-            color: Theme.widgetSubtext //slightly darker than normal text
-            font.pointSize: 13
+            color: Theme.widgetClockTextSubColor //slightly darker than normal text
+            font.pointSize: Theme.widgetClockTextSubSize
             font.weight: Font.Normal
             font.family: Theme.fontFamily
             renderType: Text.NativeRendering

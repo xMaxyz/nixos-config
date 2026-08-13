@@ -1,100 +1,126 @@
-{ config, ... }:
+{ lib, config, ... }:
 
 {
-  my.theme = {
+  config.my.host.ui = {
     global = {
-      colors = {
-        accent = "faa768";
-        foreground = "ffffff";
-      };
-      font = "JetBrainsMono Nerd Font";
+      accent = "faa768";
+      radius = 10;
       wallpaper = "file:///home/max/Bilder/.wallpaper/dust";
-    };
-
-    zsh = {
-      prompt = "%F{#ff803b}%#%f %F{#faa768}%2~%f %F{#cdd6f4}>%f ";
-      rprompt = "";
-    };
-
-    fuzzel = {
-      background = "000000bb"; #box
-      text = "cdd6f4d0"; #zusammenführen! 
-      prompt = "cdd6f4ff"; # ^^^^
-      input = "${config.my.theme.global.colors.foreground}aa";
-      match = "${config.my.theme.global.colors.accent}aa"; 
-      selection = "${config.my.theme.global.colors.accent}33"; #selection
-      selection-text = "${config.my.theme.global.colors.foreground}ff"; #selection
-      selection-match = "${config.my.theme.global.colors.accent}ff"; #selection
-      border = "${config.my.theme.global.colors.accent}ee"; #box
-    };
-
-    dunst = {
-      colors = {
-        background = "131313e0";
-        foreground = "${config.my.theme.global.colors.foreground}";
-        frame_color = "${config.my.theme.global.colors.accent}";
-      };
-
-      urgency_low = {
-        background = "2a2a2acc";
-        foreground = "cfcfcf";
-        frame_color = "666666";
-      };
-
-      urgency_normal = {
-        background = "1f2b1fcc";
-        foreground = "${config.my.theme.global.colors.foreground}";
-        frame_color = "66bb66";
-      };
-
-      urgency_critical = {
-        background = "2b1f1fcc";
-        foreground = "${config.my.theme.global.colors.foreground}";
-        frame_color = "cc6666";
+      text = {
+        foreground = "ffffff";
+        subAlpha = "d0";
+        font = "JetBrainsMono Nerd Font";
+        size = 11;
       };
     };
 
-    niri = { #alles unhashedRgbaType
-      border = {
-        inactive-color = "595959aa";
-        urgent-color = "9b0000ff";
-        active-gradient = {
-          from = "${config.my.theme.global.colors.accent}ee";
-          to = "fdaa6bee";
+    desktop = {
+      zsh = {
+        prompt = "%F{#ff803b}%#%f %F{#faa768}%2~%f %F{#cdd6f4}>%f ";
+        rprompt = "";
+      };
+
+      niri = {
+        border = {
+          inactive-color = [ "#" "595959" "aa" ];
+          urgent-color = [ "#" "9b0000" "ff" ];
+          active-gradient = { 
+            from = [ "#" config.my.host.ui.global.accent "ee" ]; 
+            to = [ "#" "fdaa6b" "ee" ];
+          };
+        };
+      };
+
+      quickshell = {
+        menubar = {
+          box = {
+            radius = config.my.host.ui.global.radius;
+            background = [ "#" "b3" "141414" ];
+          };
+          text.color = [ "#" "ff" config.my.host.ui.global.text.foreground ];
+        };
+
+        widget = {
+          zonewidth = 0.3;
+          clock = {
+            box.background = [ "#" "25" "000000" ];
+            border = {
+              color = [ "#" "15" "ffffff" ];
+              width = 1;
+              border = config.my.host.ui.global.radius;
+            };
+            text = {
+              topColor = [ "#" "ff" config.my.host.ui.global.text.foreground ];
+              subColor = [ "#" config.my.host.ui.global.text.subAlpha config.my.host.ui.global.text.foreground ];
+            };
+          };
+        };
+      };
+
+      dunst = {
+        box = {
+          background = [ "#" "131313" "e0" ];
+          foreground = [ "#" config.my.host.ui.global.text.foreground "ff" ];
+          transparency = 10;
+          origin = "top-right";
+        };
+        border = {
+          color = [ "#" config.my.host.ui.global.accent "ff" ];
+          width = 2;
+          radius = config.my.host.ui.global.radius;
+        };
+        urgency = {
+          normal = {
+            background = [ "#" "1f2b1f" "cc" ];
+            foreground = [ "#" config.my.host.ui.global.text.foreground "ff" ];
+            frame_color = [ "#" "66bb66" "ff" ];
+          };
+          low = {
+            background = [ "#" "2a2a2a" "cc" ];
+            foreground = [ "#" "cfcfcf" "ff" ];
+            frame_color = [ "#" "66bb66" "ff" ];
+          };
+          critical = {
+            background = [ "#" "2b1f1f" "cc" ];
+            foreground = [ "#" config.my.host.ui.global.text.foreground "ff" ];
+            frame_color = [ "#" "cc6666" "ff" ];
+          };
+        };
+      };
+
+      fuzzel = {
+        box = {
+          background = [ "000000" "bb" ];
+          border = [ config.my.host.ui.global.accent "ee" ]; 
+        };
+        search = {
+          prompt = [ "cdd6f4" "ff" ];
+          input = [ config.my.host.ui.global.text.foreground "aa" ];
+        };
+        list = {
+          selected = {
+            background = [ config.my.host.ui.global.accent "33" ];
+            text = [ config.my.host.ui.global.text.foreground "ff" ];
+            match = [ config.my.host.ui.global.accent "ff" ];
+          };
+          unselected = {
+            text = [ "cdd6f4" config.my.host.ui.global.text.subAlpha ];
+            match = [ config.my.host.ui.global.accent "aa" ];
+          };
         };
       };
     };
 
-    quickshell = {
-      menubar = {
-        background = "b3141414";
-      };
-
-      widget = {
-        background = "25000000";
-        border.color = "15ffffff";
-        subtext = "${config.my.theme.quickshell.text.sub.color}";
-        zonewidth = "0.3";
-      };
-
-      accent = "${config.my.theme.global.colors.accent}";
-
-      text = {
-        foreground = "${config.my.theme.global.colors.foreground}";
-        family = "${config.my.theme.global.font}";
-        color = "${config.my.theme.global.colors.foreground}";
-        sub.color = "d0${config.my.theme.global.colors.foreground}"; #d0 durch neuen subAlpha ersetzen!
-      };
-    };
-
-    yazi = {
-      color.mime = {
-        image.any = "6ae384";
-        video.any = "6ba1c9";
-        audio.any = "ff4949";
-        inode.empty = "white"; #colorNameType nutzen!
-        text.plain = "gray"; #colorNameType nutzen!
-        dir = "${config.my.theme.global.colors.accent}";
+    apps = {
+      yazi = {
+        mime = {
+          image.any = [ "#" "6ae384" ];
+          video.any = [ "#" "6ba1c9" ];
+          audio.any = [ "#" "ff4949" ];
+          inode.empty = "white";
+          text.plain = "gray";
+          dir = [ "#" config.my.host.ui.global.accent ];
+        };
       };
     };
   };

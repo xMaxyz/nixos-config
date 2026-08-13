@@ -29,14 +29,14 @@ Row {
 
         width: Theme.menubarBoxWidth
         height: Theme.menubarBoxHeight
-        radius: Theme.borderRadius
-        color: Theme.menubarBackground
+        radius: Theme.menubarBoxRadius
+        color: Theme.menubarBoxBackground
 
         Text {
             anchors.centerIn: parent
-            font.pointSize: Theme.normalFontSize
+            font.pointSize: Theme.menubarTextSize
             font.family: Theme.fontFamily
-            color: volumeBox.isMuted ? Theme.accent : Theme.foreground
+            color: volumeBox.isMuted ? Theme.accent : Theme.menubarTextColor
             text: volumeBox.hasAudio ? "V: " + volumeBox.volumePercent + "%" : "V: -"
         }
     }
@@ -57,14 +57,14 @@ Row {
         
         width: Theme.menubarBoxWidth
         height: Theme.menubarBoxHeight
-        radius: Theme.borderRadius
-        color: Theme.menubarBackground
+        radius: Theme.menubarBoxRadius
+        color: Theme.menubarBoxBackground
 
         Text {
             anchors.centerIn: parent
-            font.pointSize: Theme.normalFontSize
+            font.pointSize: Theme.menubarTextSize
             font.family: Theme.fontFamily
-            color: (batteryBox.batteryPercent < 50) ? Theme.accent : Theme.foreground
+            color: (batteryBox.batteryPercent < 50) ? Theme.accent : Theme.menubarTextColor
             text: batteryBox.hasBattery ? "B: " + batteryBox.batteryPercent + "%" : "B:  -"
         }
     }
@@ -77,8 +77,8 @@ Row {
 
         width: Math.max(Theme.menubarBoxWidth, memoryText.implicitWidth + 20)
         height: Theme.menubarBoxHeight
-        radius: Theme.borderRadius
-        color: Theme.menubarBackground
+        radius: Theme.menubarBoxRadius
+        color: Theme.menubarBoxBackground
 
         //Timer for triggering command
         Timer {
@@ -117,9 +117,9 @@ Row {
         Text {
             id: memoryText
             anchors.centerIn: parent
-            font.pointSize: Theme.normalFontSize
+            font.pointSize: Theme.menubarTextSize
             font.family: Theme.fontFamily
-            color: Theme.foreground
+            color: Theme.menubarTextColor
             text: "M: " + memoryBox.ramUsage
         }
     }
@@ -132,8 +132,8 @@ Row {
 
         width: Math.max(Theme.menubarBoxWidth, wifiText.implicitWidth + 20)
         height: Theme.menubarBoxHeight
-        radius: Theme.borderRadius
-        color: Theme.menubarBackground
+        radius: Theme.menubarBoxRadius
+        color: Theme.menubarBoxBackground
         Behavior on width {
             NumberAnimation { duration: 300; easing.type: Easing.InOutQuad }
         }
@@ -167,9 +167,9 @@ Row {
         Text {
             id: wifiText
             anchors.centerIn: parent
-            font.pointSize: Theme.normalFontSize
+            font.pointSize: Theme.menubarTextSize
             font.family: Theme.fontFamily
-            color: Theme.foreground
+            color: Theme.menubarTextColor
             text: "W: " + wifiBox.wifiName
         }
     }
