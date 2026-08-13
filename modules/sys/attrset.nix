@@ -496,6 +496,58 @@ in
                         };
                       };
                     };
+
+                    fastfetch = lib.mkOption {
+                      description = "fastfetch config";
+                      default = {};
+                      type = lib.types.submodule {
+                        options = {
+                          logo = lib.mkOption {
+                            description = "logo shown by fastfetch";
+                            default = {};
+                            type = lib.types.submodule {
+                              options = {
+                                source = lib.mkOption {
+                                  description = "source to logo; either path or distro name";
+                                  type = lib.types.str;
+                                  default = "nixos";
+                                };
+                                color = lib.mkOption {
+                                  description = "colors used for the logo";
+                                  default = {};
+                                  type = lib.types.submodule {
+                                    freeformType = lib.types.attrsOf hashedRgbType;
+                                    options = {
+                                      primary = lib.mkOption {
+                                        description = "primary color of the logo";
+                                        default = null;
+                                        type = lib.types.nullOr hashedRgbType;
+                                      };
+                                      secondary = lib.mkOption {
+                                        description = "secondary color of the logo";
+                                        default = null;
+                                        type = lib.types.nullOr hashedRgbType;
+                                      };
+                                    };
+                                  };
+                                };
+                              };
+                            };
+                          };
+                          display = lib.mkOption {
+                            description = "maps to fastfetch's display.color attribute";
+                            default = {};
+                            type = lib.types.submodule {
+                              options = {
+                                keys = lib.mkOption { type = lib.types.nullOr hashedRgbType; default = null; };
+                                title = lib.mkOption { type = lib.types.nullOr hashedRgbType; default = null; };
+                                output = lib.mkOption { type = lib.types.nullOr hashedRgbType; default = null; };
+                              };
+                            };
+                          };
+                        };
+                      };
+                    };
                   };
                 };
               };

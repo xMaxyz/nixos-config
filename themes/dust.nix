@@ -122,6 +122,21 @@
           dir = [ "#" config.my.host.ui.global.accent ];
         };
       };
+
+      fastfetch = {
+        logo = {
+          source = "nixos";
+          color = {
+            primary = [ "#" "c78400" ];
+            secondary = [ "#" "cf6400" ];
+          };
+        };
+        display = {
+          keys = [ "#" "c78400" ];
+          title = [ "#" "cf6400" ];
+          output = [ "#" "c4c4c4" ];
+        };
+      };
     };
   };
 }
