@@ -1,7 +1,7 @@
 { config, lib, ... }:
 
 let 
-  
+
   #central default values used in this very file
   default = {
     radius = 10;
@@ -22,11 +22,39 @@ let
   alphaChannelType = lib.types.strMatching "^[0-9a-f]{2}$";
   numbersign = lib.types.enum [ "#" ];
   unhashedRgbType = lib.types.strMatching "^[0-9a-f]{6}$";
-  unhashedRgbaType = lib.types.tuple [ unhashedRgbType alphaChannelType ]; 
-  unhashedArgbType = lib.types.tuple [ alphaChannelType unhashedRgbType ]; #typically used by quickshell
-  hashedRgbType = lib.types.tuple [ numbersign unhashedRgbType ];
-  hashedRgbaType = lib.types.tuple [ numbersign unhashedRgbType alphaChannelType ];
-  hashedArgbType = lib.types.tuple [ numbersign alphaChannelType unhashedRgbType ];
+
+  unhashedRgbaType = lib.types.addCheck (lib.types.listOf lib.types.anything) (x:
+    (builtins.length x == 2) &&
+    (unhashedRgbType.check (builtins.elemAt x 0)) &&
+    (alphaChannelType.check (builtins.elemAt x 1))
+  );
+
+  unhashedArgbType = lib.types.addCheck (lib.types.listOf lib.types.anything) (x:
+    (builtins.length x == 2) &&
+    (alphaChannelType.check (builtins.elemAt x 0)) &&
+    (unhashedRgbType.check (builtins.elemAt x 1))
+  );
+
+  hashedRgbType = lib.types.addCheck (lib.types.listOf lib.types.anything) (x:
+    (builtins.length x == 2) &&
+    (numbersign.check (builtins.elemAt x 0)) &&
+    (unhashedRgbType.check (builtins.elemAt x 1))
+  );
+
+  hashedRgbaType = lib.types.addCheck (lib.types.listOf lib.types.anything) (x:
+    (builtins.length x == 3) &&
+    (numbersign.check (builtins.elemAt x 0)) &&
+    (unhashedRgbType.check (builtins.elemAt x 1)) &&
+    (alphaChannelType.check (builtins.elemAt x 2))
+  );
+
+  hashedArgbType = lib.types.addCheck (lib.types.listOf lib.types.anything) (x:
+    (builtins.length x == 3) &&
+    (numbersign.check (builtins.elemAt x 0)) &&
+    (alphaChannelType.check (builtins.elemAt x 1)) &&
+    (unhashedRgbType.check (builtins.elemAt x 2))
+  );
+
   colorNameType = lib.types.enum [ "white" "black" "blue" "yellow" "red" "green" "gray" "purple" ];
   
 in 
@@ -444,7 +472,11 @@ in
                             description = "colors based on mime type";
                             default = {};
                             type = lib.types.submodule {
-                              freeformType = lib.types.attrsOf (lib.types.attrsOf hashedRgbType);
+                              freeformType = lib.types.attrsOf (lib.types.attrsOf (
+                                lib.types.addCheck lib.types.anything (x: 
+                                  hashedRgbType.check x || colorNameType.check x
+                                )
+                              ));
                             };
                           };
                         };
