@@ -23,7 +23,7 @@ in
         keyboard-focus = "exclusive";
         exit-on-keyboard-focus-loss = true;
         enable-mouse = false;
-        font = "${config.my.theme.global.font}";
+        font = config.my.host.ui.global.text.font;
         prompt = "> ";
         placeholder = "";
         icon-theme = "default";
@@ -36,7 +36,7 @@ in
         text = hex f.list.unselected.text;
         prompt = hex f.search.prompt;
         input = hex f.search.input;
-        match = hex.list.unselected.match;
+        match = hex f.list.unselected.match;
         selection = hex f.list.selected.background;
         selection-text = hex f.list.selected.text;
         selection-match = hex f.list.selected.match;

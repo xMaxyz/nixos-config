@@ -23,8 +23,8 @@ in
         inactive.color = hex n.border.inactive-color;
         urgent.color = hex n.border.urgent-color;
         active.gradient = {
-          from = hex d.border.active-gradient.from;
-          to = hex d.border.active-gradient.to;
+          from = hex n.border.active-gradient.from;
+          to = hex n.border.active-gradient.to;
           angle = 45;
           relative-to = "workspace-view";
         };

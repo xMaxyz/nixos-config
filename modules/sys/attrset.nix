@@ -291,7 +291,7 @@ in
                             default = {};
                             type = lib.types.submodule {
                               options = {
-                                color = lib.mkOption { type = hashedRgbType; default = [ "#" default.gray ]; };
+                                color = lib.mkOption { type = hashedRgbaType; default = [ "#" default.gray default.alpha.solid ]; };
                                 width = lib.mkOption { type = lib.types.ints.unsigned; default = 1; };
                                 radius = lib.mkOption { type = lib.types.ints.unsigned; default = default.radius; };
                               };

@@ -38,7 +38,7 @@ Rectangle {
         Text {
             id: timeText
             Layout.alignment: Qt.AlignHCenter
-            color: Theme.widgetClockTexTopColor
+            color: Theme.widgetClockTextTopColor
             font.pointSize: Theme.widgetClockTextTopSize
             font.weight: Font.Bold
             font.family: Theme.fontFamily

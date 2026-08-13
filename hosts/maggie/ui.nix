@@ -8,7 +8,7 @@
           width = 70;
           height = 40;
         };
-        text.size = config.my.host.ui.global.text.size;
+        text.size = 10;
       };
 
       widget = {

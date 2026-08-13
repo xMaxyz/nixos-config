@@ -3,6 +3,7 @@
 let
 
   hex = lib.concatStrings;
+  str = lib.toString;
   qs = config.my.host.ui.desktop.quickshell;
   g = config.my.host.ui.global;
 
@@ -28,7 +29,7 @@ in
 
   xdg.configFile."quickshell/qmldir".text = ''
     singleton Theme 1.0 Theme.qml
-  '';
+  '';  
 
   xdg.configFile."quickshell/Theme.qml".text = ''
     pragma Singleton
@@ -41,32 +42,32 @@ in
       
       //Menubar-Box
       property color menubarBoxBackground: "${hex qs.menubar.box.background}"
-      property int menubarBoxRadius: ${qs.menubar.box.radius}
-      property int menubarBoxWidth: ${qs.menubar.box.width}
-      property int menubarBoxHeight: ${qs.menubar.box.height}
+      property int menubarBoxRadius: ${str qs.menubar.box.radius}
+      property int menubarBoxWidth: ${str qs.menubar.box.width}
+      property int menubarBoxHeight: ${str qs.menubar.box.height}
 
       //Menubar-Text
       property color menubarTextColor: "${hex qs.menubar.text.color}"
-      property int menubarTextSize: ${qs.menubar.text.size}
+      property int menubarTextSize: ${str qs.menubar.text.size}
 
 
       //Widget
-      property real zoneWidth: ${qs.widget.zonewidth}
+      property real zoneWidth: ${str qs.widget.zonewidth}
 
       //Widget-Clock-Box
       property color widgetClockBoxBackground: "${hex qs.widget.clock.box.background}"
-      property int widgetClockBoxHeight: ${qs.widget.clock.box.height}
+      property int widgetClockBoxHeight: ${str qs.widget.clock.box.height}
 
       //Widget-Clock-Border
       property color widgetClockBorderColor: "${hex qs.widget.clock.border.color}"
-      property int widgetClockBorderWidth: ${qs.widget.clock.border.width}
-      property int widgetClockBorderRadius: ${qs.widget.clock.border.radius}
+      property int widgetClockBorderWidth: ${str qs.widget.clock.border.width}
+      property int widgetClockBorderRadius: ${str qs.widget.clock.border.radius}
 
       //Widget-Clock-Text
       property color widgetClockTextTopColor: "${hex qs.widget.clock.text.topColor}"
       property color widgetClockTextSubColor: "${hex qs.widget.clock.text.subColor}"
-      property int widgetClockTextTopSize: ${qs.widget.clock.text.topSize}
-      property int widgetClockTextSubSize: ${qs.widget.clock.text.subSize}
+      property int widgetClockTextTopSize: ${str qs.widget.clock.text.topSize}
+      property int widgetClockTextSubSize: ${str qs.widget.clock.text.subSize}
 
     }
   '';

@@ -47,7 +47,7 @@
             border = {
               color = [ "#" "15" "ffffff" ];
               width = 1;
-              border = config.my.host.ui.global.radius;
+              radius = config.my.host.ui.global.radius;
             };
             text = {
               topColor = [ "#" "ff" config.my.host.ui.global.text.foreground ];

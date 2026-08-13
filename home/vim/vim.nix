@@ -52,8 +52,8 @@
 
       let g:indentLine_char = "│"
       let g:indentLine_defaultGroup = "SpecialKey"
-      autocmd ColorScheme * highlight Conceal ctermfg=NONE guifg=#${config.my.theme.global.colors.accent}
-      autocmd ColorScheme * highlight CursorLineNr ctermfg=NONE guifg=#${config.my.theme.global.colors.accent}
+      autocmd ColorScheme * highlight Conceal ctermfg=NONE guifg=#${config.my.host.ui.global.accent}
+      autocmd ColorScheme * highlight CursorLineNr ctermfg=NONE guifg=#${config.my.host.ui.global.accent}
       
     '';
 
