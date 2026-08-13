@@ -477,6 +477,9 @@ in
                                   hashedRgbType.check x || colorNameType.check x
                                 )
                               ));
+                              options = {
+                                dir = lib.mkOption { type = hashedRgbType; default = default.blue; };
+                              };
                             };
                           };
                         };
