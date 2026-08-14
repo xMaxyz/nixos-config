@@ -8,13 +8,7 @@
     
     loader = {
       systemd-boot.enable = false;
-      grub = {
-        enable = true;
-        device = "nodev";
-        efiSupport = true;
-        efiInstallAsRemovable = true;
-        useOSProber = true;
-      };
+      systemd-boot.configurationLimit = 1;
       efi.canTouchEfiVariables = false;
     };
   };
