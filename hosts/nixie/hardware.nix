@@ -10,15 +10,30 @@
   hardware.graphics.enable32Bit = true;
   
   fileSystems."/" =
-    { device = "/dev/disk/by-uuid/####";
+    { device = "/dev/disk/by-uuid/527bebfa-def6-439b-9c94-31a7a9fb6c75";
       fsType = "ext4";
       options = [ "defaults" "noatime" ];
     };
 
   fileSystems."/boot" =
-    { device = "/dev/disk/by-uuid/####";
+    { device = "/dev/disk/by-uuid/4E7B-A950";
       fsType = "vfat";
-      options = [ "fmask=0077" "dmask=0077" ];
+      options = [ "fmask=0022" "dmask=0022" ];
     };
+  
+  boot.initrd = {
+    availableKernelModules = [
+      "xhci_pci"
+      "ahci"
+      "nvme"
+      "usbhid"
+      "uas"
+      "usb_storage"
+      "sd_mod"
+      "sr_mod"
+      "rtsx_usb_sdmmc"
+    ];
+    kernelModules = [];
+  };
 
 }
