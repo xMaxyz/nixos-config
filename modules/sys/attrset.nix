@@ -473,7 +473,15 @@ in
                 type = lib.types.submodule {
                   freeformType = lib.types.attrsOf lib.types.anything;
                   options = {
-                    
+
+                    kitty = lib.mkOption {
+                      description = "kitty config";
+                      default = {};
+                      type = lib.types.submodule {
+                        freeformType = lib.types.attrsOf lib.types.anything;
+                      };
+                    };
+
                     yazi = lib.mkOption {
                       description = "cli file manager";
                       default = {};

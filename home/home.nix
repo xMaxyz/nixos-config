@@ -70,15 +70,5 @@
 
   programs = {
     home-manager.enable = true;
-    kitty = {
-      enable = true;
-      package = pkgs.kitty;
-      settings = {
-        background_opacity = "0.6";
-        font_size = "11.0";
-        confirm_os_window_close = "0";
-        enable_audio_bell = false;
-      };
-    };
   };
 }
