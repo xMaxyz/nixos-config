@@ -29,11 +29,14 @@
 
   home.packages = (with pkgs; [
     #desktop
-    quickshell
-    dunst
-    firefox
-    kid3
+    quickshell #shell
+    dunst #notify daemon
+    firefox #browser
+    kid3 #mp3 tagging
     tipp10
+    kdePackages.dolphin #file manager
+    kdePackages.elisa #music player
+    thunderbird
 
     #info
     btop
