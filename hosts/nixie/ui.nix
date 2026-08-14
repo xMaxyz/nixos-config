@@ -5,10 +5,10 @@
     desktop.quickshell = {
       menubar = {
         box = {
-          width = 70;
-          height = 40;
+          width = 90;
+          height = 50;
         };
-        text.size = 10;
+        text.size = 12;
       };
 
       widget = {
