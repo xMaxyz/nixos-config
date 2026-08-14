@@ -21,9 +21,9 @@
         };
       };
     };
-  };
 
-  apps.kitty = {
-    font_size = "11.0";
+    apps.kitty = {
+      font_size = "11.0";
+    };
   };
 }
