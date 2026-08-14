@@ -12,9 +12,10 @@
         enable = true;
         device = "nodev";
         efiSupport = true;
+        efiInstallAsRemovable = true;
         useOSProber = true;
       };
-      efi.canTouchEfiVariables = true;
+      efi.canTouchEfiVariables = false;
     };
   };
 }
