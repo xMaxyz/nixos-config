@@ -10,7 +10,7 @@
   hardware.graphics.enable32Bit = true;
   
   fileSystems."/" =
-    { device = "/dev/disk/by-uuid/527bebfa-def6-439b-9c94-31a7a9fb6c75";
+    { device = "/dev/disk/by-uuid/477bf080-e36f-40e8-95ae-bb44e61d82a3";
       fsType = "ext4";
       options = [ "defaults" "noatime" ];
     };
