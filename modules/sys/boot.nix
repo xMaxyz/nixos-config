@@ -9,7 +9,7 @@
     loader = {
       systemd-boot.enable = true;
       systemd-boot.configurationLimit = 1;
-      efi.canTouchEfiVariables = false;
+      efi.canTouchEfiVariables = true;
     };
   };
 }
