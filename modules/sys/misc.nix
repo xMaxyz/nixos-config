@@ -6,12 +6,17 @@
       experimental-features = [ "nix-command" "flakes" ];
       auto-optimise-store = true;
     };
-    optimise.automatic = true;
+
+    optimise = {
+      automatic = true;
+      dates = [ "03:00" ];
+    };
 
     gc = {
       automatic = true;
       dates = "weekly";
       options = "delete-older-than 7d";
+      persistent = true;
     };
   };
 
