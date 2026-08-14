@@ -6,6 +6,7 @@
       experimental-features = [ "nix-command" "flakes" ];
       auto-optimise-store = true;
     };
+    optimise.automatic = true;
 
     gc = {
       automatic = true;
