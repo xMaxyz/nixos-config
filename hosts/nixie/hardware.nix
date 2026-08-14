@@ -2,8 +2,8 @@
 
 {
   imports = [
-    ../../modules/extra/nvidia-pascal.nix
-    ../../modules/extra/pipewire.nix
+    #../../modules/extra/nvidia-pascal.nix
+    #../../modules/extra/pipewire.nix
   ];
 
   hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;

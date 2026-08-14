@@ -7,23 +7,14 @@
     ];
     
     loader = {
-      systemd-boot.enable = true;
+      systemd-boot.enable = false;
+      grub = {
+        enable = true;
+        device = "nodev";
+        efiSupport = true;
+        useOSProber = true;
+      };
       efi.canTouchEfiVariables = true;
-    };
-
-    initrd = { #hardware-spezifisch!
-      availableKernelModules = [ 
-        "uhci_hcd" 
-        "ehci_pci" 
-        "ahci" 
-        "firewire_ohci" 
-        "usbhid" 
-        "usb_storage" 
-        "sd_mod" 
-        "sdhci_pci" 
-      ];
-
-      kernelModules = [ ];
     };
   };
 }

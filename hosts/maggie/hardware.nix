@@ -19,5 +19,18 @@
       fsType = "vfat";
       options = [ "fmask=0077" "dmask=0077" ];
     };
-
+  
+  boot.initrd = {
+    availableKernelModules = [
+      "uhci_hcd" 
+      "ehci_pci" 
+      "ahci" 
+      "firewire_ohci" 
+      "usbhid" 
+      "usb_storage" 
+      "sd_mod" 
+      "sdhci_pci"
+    ];
+    kernelModules = [];
+  };
 }
