@@ -12,6 +12,7 @@
     ./yazi/yazi.nix
     ./vim/vim.nix
     ./fastfetch/fastfetch.nix
+    ./kitty/kitty.nix
   ];
   
   home.username = "max";
