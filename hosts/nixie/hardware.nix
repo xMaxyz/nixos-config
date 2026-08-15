@@ -20,6 +20,12 @@
       fsType = "vfat";
       options = [ "fmask=0022" "dmask=0022" ];
     };
+
+  fileSystems."/mnt/sandisk" = 
+    { device = "/dev/disk/by-uuid/1cb5c655-d62d-4162-8a37-62a225d1885a";
+      fsType = "ext4";
+      options = [ "defaults" "noatime" "nofail" "x-systemd.device-timeout=2s" ];
+    };
   
   boot.initrd = {
     availableKernelModules = [
