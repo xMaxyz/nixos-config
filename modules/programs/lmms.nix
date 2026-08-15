@@ -14,5 +14,8 @@
     calf
   ];
 
-  home.file."Dokumente/lmms/plugins/vst/Vital.so".source = "${pkgs.vital}/lib/vst/Vital.so";
+  home-manager.users.max = { pkgs, ... }: {
+    home.file."Dokumente/lmms/plugins/vst/Vital.so".source = "${pkgs.vital}/lib/vst/Vital.so";
+  };
+
 }
