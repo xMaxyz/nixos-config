@@ -48,6 +48,7 @@
     vlc
     mpv
     playerctl
+    zrythm #DAW
 
     #cli
     curl
