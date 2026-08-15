@@ -10,14 +10,8 @@
       (modulesPath + "/installer/scan/not-detected.nix")
       #back-end
       ./hardware.nix
-      ../../modules/sys/boot.nix
-      ../../modules/sys/swap.nix
-      ../../modules/sys/misc.nix
-
-      #user-space
-      ../../modules/usr/users.nix
-      ../../modules/usr/services.nix
-      ../../modules/usr/packages.nix
+      ./software.nix
+      ../../modules/core.nix
 
 
     ];

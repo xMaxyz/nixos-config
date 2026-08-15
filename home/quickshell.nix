@@ -73,9 +73,9 @@ in
   '';
 
   xdg.configFile = {
-    "quickshell/modules".source = ../../assets/quickshell/modules;
-    "quickshell/menubar".source = ../../assets/quickshell/menubar;
-    "quickshell/desktop".source = ../../assets/quickshell/desktop;
+    "quickshell/modules".source = ../assets/quickshell/modules;
+    "quickshell/menubar".source = ../assets/quickshell/menubar;
+    "quickshell/desktop".source = ../assets/quickshell/desktop;
   };
   
 }

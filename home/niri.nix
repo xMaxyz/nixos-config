@@ -2,11 +2,11 @@
 
 {
   imports = [ 
-    ./binds.nix
-    ./input.nix
-    ./layout.nix
-    ./misc.nix
-    ./window-rules.nix 
+    ./niri/binds.nix
+    ./niri/input.nix
+    ./niri/layout.nix
+    ./niri/misc.nix
+    ./niri/window-rules.nix 
   ];
 
   programs.niri = {

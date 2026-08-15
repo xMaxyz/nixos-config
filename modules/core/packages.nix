@@ -4,10 +4,10 @@
   environment.systemPackages = with pkgs; [
     brightnessctl
     qjackctl #audio routing
-
-    (prismlauncher.override { #übergibt Java an prism
-    jdks = [ graalvmPackages.graalvm-ce zulu8 zulu17 zulu ];
-    })
+    btop
+    fastfetch
+    tree
+    curl
   ];
   
   programs = {
@@ -31,6 +31,4 @@
       enable = true;
     };
   };
-
-  networking.networkmanager.enable = true;
 }

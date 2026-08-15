@@ -2,7 +2,7 @@
 
 {
   imports = [
-    ../../modules/extra/broadcom.nix
+    ../../modules/hardware/broadcom.nix
   ];
 
   hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;

@@ -1,6 +1,7 @@
 { config, ... }:
 
 {
+  networking.networkmanager.enable = true;
   services = {
     openssh.enable = true;
     upower.enable = true;
