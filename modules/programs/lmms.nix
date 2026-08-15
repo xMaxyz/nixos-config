@@ -6,11 +6,13 @@
   ];
 
   environment.systemPackages = with pkgs; [
-    zrythm
+    lmms
 
     #plugins
     vital
     lsp-plugins
     calf
   ];
+
+  home.file."Dokumente/lmms/plugins/vst/Vital.so".source = "${pkgs.vital}/lib/vst/Vital.so";
 }

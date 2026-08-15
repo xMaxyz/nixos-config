@@ -3,7 +3,7 @@
 {
   #extra program modules for this system
   imports = [
-    ../../modules/programs/zrythm.nix
+    ../../modules/programs/lmms.nix
   ];
   
   environment.systemPackages = with pkgs; [
