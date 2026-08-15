@@ -4,6 +4,7 @@
   programs.niri.settings.binds = {
     "Mod+X".action.spawn-sh = [ "$NIRI_USER_TERMINAL" ];
     "Mod+Space".action.spawn-sh = [ "$NIRI_USER_MENU" ];
+    "Mod+Shift+Space".action.spawn-sh = [ "fuzzel --launch-prefix nvidia-offload" ];
     "Mod+E".action.spawn-sh = [ "$NIRI_USER_FILEMANAGER" ];
     "Mod+Shift+E".action.spawn-sh = [ "dolphin" ];
     "Mod+B".action.spawn-sh = [ "$NIRI_USER_BROWSER" ];
