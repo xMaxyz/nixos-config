@@ -2,7 +2,7 @@
 
 {
   imports = [
-    #../../modules/extra/nvidia-pascal.nix
+    ../../modules/extra/nvidia-pascal.nix
     ../../modules/extra/pipewire.nix
   ];
 
