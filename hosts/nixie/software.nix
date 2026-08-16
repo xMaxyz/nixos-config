@@ -4,6 +4,7 @@
   #extra program modules for this system
   imports = [
     ../../modules/programs/lmms.nix
+    ../../modules/programs/vesktop.nix
   ];
   
   environment.systemPackages = with pkgs; [
