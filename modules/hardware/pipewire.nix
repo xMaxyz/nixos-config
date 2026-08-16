@@ -1,4 +1,4 @@
-{ config, ... }:
+{ config, pkgs, ... }:
 
 {
   services.pipewire = {
@@ -16,4 +16,5 @@
       };
     };
   };
+  environment.systemPackages = [ pkgs.pavucontrol ];
 }
