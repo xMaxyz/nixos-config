@@ -7,6 +7,7 @@
     fastfetch
     tree
     curl
+    wl-clipboard
   ];
   
   programs = {
