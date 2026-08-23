@@ -10,10 +10,6 @@
             # Swap left modifier keys
             leftalt = "leftmeta";
             leftmeta = "leftalt";
-          
-            # Optional: Swap right modifier keys
-            rightalt = "rightmeta";
-            rightmeta = "rightalt";
           };
         };
       };
