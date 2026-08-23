@@ -2,7 +2,7 @@
 
 {
   imports = [
-    ../hardware/pipewire.nix #for sound
+    ../services/pipewire.nix #for sound
   ];
 
   environment.systemPackages = with pkgs; [
