@@ -16,5 +16,9 @@
       };
     };
   };
-  environment.systemPackages = [ pkgs.pavucontrol ];
+  environment.systemPackages = with pkgs; [ 
+    pavucontrol
+    qjackctl #audio routing
+    crosspipe #better audio routing
+  ];
 }

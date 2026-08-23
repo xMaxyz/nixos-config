@@ -3,8 +3,6 @@
 {
   environment.systemPackages = with pkgs; [
     brightnessctl
-    qjackctl #audio routing
-    crosspipe #better audio routing
     btop
     fastfetch
     tree
