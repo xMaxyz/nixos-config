@@ -30,7 +30,6 @@
 
   ]) ++ (with pkgs.unstable; [  
     vscodium
-    discord
     steam
   ]);
 }
