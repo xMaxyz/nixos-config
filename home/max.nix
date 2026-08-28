@@ -3,7 +3,7 @@
 {
   imports = 
   [
-    ./max/packages.nix
+    ./max/programs.nix
     
     ./max/zsh.nix
     ./max/git.nix
