@@ -1,11 +1,7 @@
 { pkgs, ... }:
 
 {
-  imports = [
-    ../services/pipewire.nix #for sound
-  ];
-
-  environment.systemPackages = with pkgs; [
+  home.packages = with pkgs; [
     lmms
 
     #plugins
@@ -14,8 +10,6 @@
     calf
   ];
 
-  home-manager.users.max = { pkgs, ... }: {
-    home.file."Dokumente/lmms/plugins/vst/Vital.so".source = "${pkgs.vital}/lib/vst/Vital.so";
-  };
-
+  #make vital plugin recognisable for lmms
+  home.file."Dokumente/lmms/plugins/vst/Vital.so".source = "${pkgs.vital}/lib/vst/Vital.so";
 }
