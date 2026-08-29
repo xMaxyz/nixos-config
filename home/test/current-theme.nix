@@ -1,5 +1,0 @@
-{
-  imports = [
-    ../../themes/test.nix
-  ];
-}
