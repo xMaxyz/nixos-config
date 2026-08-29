@@ -1,6 +1,20 @@
-{ pkgs, ... }:
+{ config, pkgs, ... }:
 
 {
+  
+  #hosts for additional software
+  config.myPrograms = {
+    pass.hosts = [ "nixie" "maggie" ];
+    vesktop.hosts = [ "nixie" ];
+    lmms.hosts = [ "nixie" ];
+  };
+
+  imports = [
+    ../../modules/programs/pass.nix #pass
+    ../../modules/programs/vesktop.nix #vesktop
+    ../../modules/programs/lmms.nix #LMMS
+  ];
+  
   home.packages = (with pkgs; [
     #desktop
     quickshell #shell
