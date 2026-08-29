@@ -1,6 +1,20 @@
-{ pkgs, ... }:
+{ config, pkgs, ... }:
 
 {
+  
+  #hosts for additional software
+  my.host.programs.hosts = {
+    pass = [ "nixie" "maggie" ];
+    vesktop = [ "nixie" ];
+    lmms = [ "nixie" ];
+  };
+
+  imports = [
+    ../../modules/programs/pass.nix #pass
+    ../../modules/programs/vesktop.nix #vesktop
+    ../../modules/programs/lmms.nix #LMMS
+  ];
+  
   home.packages = (with pkgs; [
     #desktop
     quickshell #shell
@@ -30,7 +44,6 @@
 
   ]) ++ (with pkgs.unstable; [  
     vscodium
-    discord
     steam
   ]);
 }

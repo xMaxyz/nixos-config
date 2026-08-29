@@ -28,10 +28,12 @@
       home-manager.useGlobalPkgs = true;
       home-manager.useUserPackages = true;
       home-manager.extraSpecialArgs = { inherit inputs host; };
-      home-manager.users.max = import ./home.nix;
+      
+      home-manager.users.max = import ./home/max.nix;
+      
       home-manager.sharedModules = [
-        inputs.niri.homeModules.niri
         ./modules/core/attrset.nix
+        inputs.niri.homeModules.niri
       ];
     };
 
@@ -40,7 +42,6 @@
       specialArgs = { inherit inputs host; };
       modules = [
         ./hosts/${host}/configuration.nix
-        ./modules/core/attrset.nix
         overlayModule
         home-manager.nixosModules.home-manager
         (homeManagerConfigModule host) 

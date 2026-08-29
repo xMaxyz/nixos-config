@@ -60,7 +60,6 @@ let
 in 
 {
   imports = [
-    ../../themes/current.nix
     ../../hosts/${host}/ui.nix
   ];
   
@@ -71,6 +70,14 @@ in
       freeformType = lib.types.attrsOf lib.types.anything;
       options = {
         
+        programs = lib.mkOption {
+          description = "program specific settings for each user";
+          default = {};
+          type = lib.types.submodule {
+            freeformType = lib.types.attrsOf lib.types.anything;
+          };
+        };
+
         ui = lib.mkOption {
           description = "Unified system-wide visual configuration";
           default = {};

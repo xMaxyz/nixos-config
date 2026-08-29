@@ -1,11 +1,13 @@
-{ config, pkgs, ... }:
+{ config, pkgs, lib, host, ... }:
 
-{
-  imports = [
-    ../services/gnupg.nix
-  ];
+{ 
+  options.my.host.programs.hosts.pass = lib.mkOption {
+    description = "hosts on which pass may be installed";
+    default = [];
+    type = lib.types.listOf lib.types.str;
+  };
   
-  home-manager.users.max = { config, pkgs, ... }: {
+  config = lib.mkIf (lib.elem host config.my.host.programs.hosts.pass) {
     programs.password-store = {
       enable = true;
       package = pkgs.pass.withExtensions (exts: [

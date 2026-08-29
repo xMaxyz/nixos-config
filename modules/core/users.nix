@@ -8,5 +8,6 @@
     shell = pkgs.zsh;
     packages = with pkgs; [];
   };
+
   users.defaultUserShell = pkgs.zsh;
 }

@@ -3,18 +3,19 @@
 {
   imports = 
   [
-    ./home/packages.nix
+    ./max/current-theme.nix
+    ./max/programs.nix
     
-    ./home/zsh.nix
-    ./home/git.nix
-    ./home/fuzzel.nix
-    ./home/dunst.nix
-    ./home/niri.nix
-    ./home/quickshell.nix
-    ./home/yazi.nix
-    ./home/vim.nix
-    ./home/fastfetch.nix
-    ./home/kitty.nix
+    ./max/zsh.nix
+    ./max/git.nix
+    ./max/fuzzel.nix
+    ./max/dunst.nix
+    ./max/niri.nix
+    ./max/quickshell.nix
+    ./max/yazi.nix
+    ./max/vim.nix
+    ./max/fastfetch.nix
+    ./max/kitty.nix
   ];
   
   home.username = "max";

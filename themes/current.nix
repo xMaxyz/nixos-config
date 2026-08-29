@@ -1,5 +1,0 @@
-{
-  imports = [
-    ./dust.nix
-  ];
-}
