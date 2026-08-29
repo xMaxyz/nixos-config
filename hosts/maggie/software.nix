@@ -1,9 +1,7 @@
 { pkgs, ... }:
 
 {
-  imports = [
-    ../../modules/programs/pass.nix
-  ];
+  imports = [];
 
   environment.systemPackages = with pkgs; [
 
