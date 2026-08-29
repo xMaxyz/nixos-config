@@ -3,10 +3,10 @@
 {
   
   #hosts for additional software
-  myPrograms = {
-    pass.hosts = [ "nixie" ];
-    vesktop.hosts = [ "nixie" "maggie" ];
-    lmms.hosts = [ "nixie" ];
+  my.host.programs.hosts = {
+    pass = [ "nixie" ];
+    vesktop = [ "nixie" ];
+    lmms = [ "nixie" ];
   };
 
   imports = [

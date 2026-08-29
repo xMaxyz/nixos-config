@@ -1,13 +1,13 @@
 { pkgs, host, lib, config, ... }:
 
 {
-  options.myPrograms.lmms.hosts = lib.mkOption {
+  options.my.host.programs.hosts.lmms = lib.mkOption {
     type = lib.types.listOf lib.types.str;
     default = [];
     description = "hosts LMMS should be installed on";
   };
 
-  config = lib.mkIf (lib.elem host config.myPrograms.lmms.hosts) {
+  config = lib.mkIf (lib.elem host config.my.host.programs.hosts.lmms) {
     home.packages = with pkgs; [
       lmms
 

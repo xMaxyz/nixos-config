@@ -1,13 +1,13 @@
 { config, pkgs, lib, host, ... }:
 
 { 
-  options.myPrograms.pass.hosts = lib.mkOption {
+  options.my.host.programs.hosts.pass = lib.mkOption {
     description = "hosts on which pass may be installed";
     default = [];
     type = lib.types.listOf lib.types.str;
   };
   
-  config = lib.mkIf (lib.elem host config.myPrograms.pass.hosts) {
+  config = lib.mkIf (lib.elem host config.my.host.programs.hosts.pass) {
     programs.password-store = {
       enable = true;
       package = pkgs.pass.withExtensions (exts: [

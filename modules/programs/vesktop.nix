@@ -1,13 +1,13 @@
 { pkgs, inputs, host, config, lib, ... }:
 
 {
-  options.myPrograms.vesktop.hosts = lib.mkOption {
+  options.my.host.programs.hosts.vesktop = lib.mkOption {
     description = "hosts on which vesktop may be installed";
     default = [];
     type = lib.types.listOf lib.types.str;
   };
   
-  config = lib.mkIf (lib.elem host config.myPrograms.vesktop.hosts) {
+  config = lib.mkIf (lib.elem host config.my.host.programs.hosts.vesktop) {
     programs.vesktop = {
       enable = true;
       package = pkgs.unstable.vesktop;
