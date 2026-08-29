@@ -3,7 +3,7 @@
 {
   
   #hosts for additional software
-  config.myPrograms = {
+  myPrograms = {
     pass.hosts = [ "nixie" "maggie" ];
     vesktop.hosts = [ "nixie" ];
     lmms.hosts = [ "nixie" ];

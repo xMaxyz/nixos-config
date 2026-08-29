@@ -1,4 +1,4 @@
-{ pkgs, inputs, host, config, ... }:
+{ pkgs, inputs, host, config, lib, ... }:
 
 {
   options.myPrograms.vesktop.hosts = lib.mkOption {
