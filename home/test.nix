@@ -3,6 +3,7 @@
 {
   imports = 
   [
+    ./test/current-theme.nix
     ./test/programs.nix
     
     ./test/zsh.nix

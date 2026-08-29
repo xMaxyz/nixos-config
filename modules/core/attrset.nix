@@ -60,7 +60,6 @@ let
 in 
 {
   imports = [
-    ../../themes/current.nix
     ../../hosts/${host}/ui.nix
   ];
   
