@@ -29,6 +29,7 @@
       home-manager.useUserPackages = true;
       home-manager.extraSpecialArgs = { inherit inputs host; };
       home-manager.users.max = import ./home/max.nix;
+      home-manager.users.test = import ./home/test.nix;
       home-manager.sharedModules = [
         inputs.niri.homeModules.niri
         ./modules/core/attrset.nix
