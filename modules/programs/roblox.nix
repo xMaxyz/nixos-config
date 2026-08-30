@@ -14,8 +14,8 @@
       remotes = [{
         name = "flathub";
         location = "https://flathub.org";
-        # Native Option von nix-flatpak nutzen statt 'args':
-        gpgKey = pkgs.fetchurl {
+        # Hier nutzen wir den vom Modul vorgeschlagenen Namen:
+        gpg-import = pkgs.fetchurl {
           url = "https://flathub.org";
           hash = "sha256-govGILbUH/VYAq5yp4keD+GCj3CzmlZ2NSqKzecu3Eo=";
         };
