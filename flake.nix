@@ -27,7 +27,14 @@
     };
   };
 
-  outputs = { self, nixpkgs, nixpkgs-unstable, home-manager, ... }@inputs: 
+  outputs = { 
+    self, 
+    nixpkgs, 
+    nixpkgs-unstable, 
+    home-manager, 
+    nix-flatpak,
+    ... 
+  }@inputs: 
   let
     #sets an overlay to create a pkgs.unstable
     overlayModule = {
