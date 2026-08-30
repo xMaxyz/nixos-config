@@ -10,16 +10,25 @@
   config = lib.mkIf (lib.elem host config.my.host.programs.hosts.roblox) {
     services.flatpak = {
       enable = true;
+      uninstallUnmanaged = true;
 
       remotes = [{
         name = "flathub";
         location = "https://dl.flathub.org/repo/flathub.flatpakrepo";
       }];
 
-
       packages = [
-        "org.vinegartq.Sober"
+        "org.vinegarhq.Sober"
       ];
+
+      #opens Sober with XWayland for OpenGL 
+      overrides = {
+        "org.vinegarhq.Sober" = {
+          Environment = {
+            "DISPLAY" = ":0";
+          };
+        };
+      };
     };
   };
 }
