@@ -14,11 +14,13 @@
       remotes = [{
         name = "flathub";
         location = "https://flathub.org";
-        args = "--gpg-import=${pkgs.fetchurl {
+        # Native Option von nix-flatpak nutzen statt 'args':
+        gpgKey = pkgs.fetchurl {
           url = "https://flathub.org";
-          sha256 = "sha256-govGILbUH/VYAq5yp4keD+GCj3CzmlZ2NSqKzecu3Eo=";
-        }}";
+          hash = "sha256-govGILbUH/VYAq5yp4keD+GCj3CzmlZ2NSqKzecu3Eo=";
+        };
       }];
+
 
       packages = [
         "org.vinegartq.Sober"
