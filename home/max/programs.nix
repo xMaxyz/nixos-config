@@ -7,7 +7,7 @@
     pass = [ "nixie" "maggie" ];
     vesktop = [ "nixie" ];
     lmms = [ "nixie" ];
-    roblox = [ "nixie" "maggie" ];
+    roblox = [ "nixie" ];
   };
 
   imports = [
