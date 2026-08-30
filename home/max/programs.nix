@@ -7,12 +7,14 @@
     pass = [ "nixie" "maggie" ];
     vesktop = [ "nixie" ];
     lmms = [ "nixie" ];
+    roblox = [ "nixie" "maggie" ];
   };
 
   imports = [
     ../../modules/programs/pass.nix #pass
     ../../modules/programs/vesktop.nix #vesktop
     ../../modules/programs/lmms.nix #LMMS
+    ../../modules/programs/roblox.nix #roblox
   ];
   
   home.packages = (with pkgs; [
